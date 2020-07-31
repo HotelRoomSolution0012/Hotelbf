@@ -3,17 +3,17 @@ package com.ischoolbar.programmer.page.admin;
 import org.springframework.stereotype.Component;
 
 /**
- * ·ÖÒ³»ù±¾ÐÅÏ¢
- * @author llq
+ * ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+ * @author n
  *
  */
 @Component
 public class Page {
-	private int page = 1;//µ±Ç°Ò³Âë
+	private int page = 1;//ï¿½ï¿½Ç°Ò³ï¿½ï¿½
 	
-	private int rows;//Ã¿Ò³ÏÔÊ¾ÊýÁ¿
+	private int rows;//Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 	
-	private int offset;//¶ÔÓ¦Êý¾Ý¿âÖÐµÄÆ«ÒÆÁ¿
+	private int offset;//ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ðµï¿½Æ«ï¿½ï¿½ï¿½ï¿½
 
 	public int getPage() {
 		return page;

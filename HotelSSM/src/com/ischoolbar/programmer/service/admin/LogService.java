@@ -9,8 +9,8 @@ import com.ischoolbar.programmer.entity.admin.Authority;
 import com.ischoolbar.programmer.entity.admin.Log;
 
 /**
- * 日志接口
- * @author llq
+ * 锟斤拷志锟接匡拷
+ * @author n
  *
  */
 @Service

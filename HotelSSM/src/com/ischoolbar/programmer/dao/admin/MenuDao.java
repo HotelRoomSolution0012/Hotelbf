@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.ischoolbar.programmer.entity.admin.Menu;
 
 /**
- * ²Ëµ¥¹ÜÀídao
- * @author llq
+ * ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½dao
+ * @author n
  *
  */
 @Repository

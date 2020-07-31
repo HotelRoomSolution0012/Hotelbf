@@ -11,8 +11,8 @@ import net.sf.json.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 /**
- * Ç°Ì¨µÇÂ¼À¹½ØÆ÷
- * @author llq
+ * Ç°Ì¨ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @author n
  *
  */
 public class LoginInterceptor implements HandlerInterceptor {
@@ -39,19 +39,19 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String requestURI = request.getRequestURI();
 		Object admin = request.getSession().getAttribute("account");
 		if(admin == null){
-			//±íÊ¾Î´µÇÂ¼»òÕßµÇÂ¼Ê§Ð§
-			System.out.println("Á´½Ó"+requestURI+"½øÈëÀ¹½ØÆ÷£¡");
+			//ï¿½ï¿½Ê¾Î´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ßµï¿½Â¼Ê§Ð§
+			System.out.println("ï¿½ï¿½ï¿½ï¿½"+requestURI+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			String header = request.getHeader("X-Requested-With");
-			//ÅÐ¶ÏÊÇ·ñÊÇajaxÇëÇó
+			//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½
 			if("XMLHttpRequest".equals(header)){
-				//±íÊ¾ÊÇajaxÇëÇó
+				//ï¿½ï¿½Ê¾ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½
 				Map<String, String> ret = new HashMap<String, String>();
 				ret.put("type", "error");
-				ret.put("msg", "µÇÂ¼»á»°³¬Ê±»ò»¹Î´µÇÂ¼£¬ÇëÖØÐÂµÇÂ¼!");
+				ret.put("msg", "ï¿½ï¿½Â¼ï¿½á»°ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼!");
 				response.getWriter().write(JSONObject.fromObject(ret).toString());
 				return false;
 			}
-			//±íÊ¾ÊÇÆÕÍ¨Á´½ÓÌø×ª£¬Ö±½ÓÖØ¶¨Ïòµ½µÇÂ¼Ò³Ãæ
+			//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ö±ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½òµ½µï¿½Â¼Ò³ï¿½ï¿½
 			response.sendRedirect(request.getServletContext().getContextPath() + "/home/login");
 			return false;
 		}

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.ischoolbar.programmer.entity.admin.Role;
 
 /**
- * ½ÇÉ«role dao
- * @author llq
+ * ï¿½ï¿½É«role dao
+ * @author n
  *
  */
 @Repository

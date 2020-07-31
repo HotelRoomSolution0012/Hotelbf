@@ -3,17 +3,17 @@ package com.ischoolbar.programmer.entity.admin;
 import org.springframework.stereotype.Component;
 
 /**
- * È¨ÏÞÊµÌå
- * @author llq
+ * È¨ï¿½ï¿½Êµï¿½ï¿½
+ * @author n
  *
  */
 @Component
 public class Authority {
 	private Long id;
 	
-	private Long roleId;//½ÇÉ«id
+	private Long roleId;//ï¿½ï¿½É«id
 	
-	private Long menuId;//²Ëµ¥id
+	private Long menuId;//ï¿½Ëµï¿½id
 
 	public Long getId() {
 		return id;

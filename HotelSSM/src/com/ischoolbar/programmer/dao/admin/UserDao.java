@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.ischoolbar.programmer.entity.admin.User;
 
 /**
- * userÓÃ»§dao
- * @author llq
+ * userï¿½Ã»ï¿½dao
+ * @author n
  *
  */
 @Repository

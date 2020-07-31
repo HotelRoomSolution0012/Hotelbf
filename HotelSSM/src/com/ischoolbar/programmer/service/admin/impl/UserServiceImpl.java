@@ -10,8 +10,8 @@ import com.ischoolbar.programmer.dao.admin.UserDao;
 import com.ischoolbar.programmer.entity.admin.User;
 import com.ischoolbar.programmer.service.admin.UserService;
 /**
- * userÓÃ»§serviceimpl
- * @author llq
+ * userï¿½Ã»ï¿½serviceimpl
+ * @author n
  *
  */
 @Service

@@ -18,8 +18,8 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.LogService;
 
 /**
- * ÈÕÖ¾¹ÜÀí¿ØÖÆÆ÷
- * @author llq
+ * ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @author n
  *
  */
 @RequestMapping("/admin/log")
@@ -29,7 +29,7 @@ public class LogController {
 	private LogService logService;
 	
 	/**
-	 * ÈÕÖ¾ÁÐ±íÒ³Ãæ
+	 * ï¿½ï¿½Ö¾ï¿½Ð±ï¿½Ò³ï¿½ï¿½
 	 * @param model
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class LogController {
 	}
 	
 	/**
-	 * »ñÈ¡ÈÕÖ¾ÁÐ±í
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ö¾ï¿½Ð±ï¿½
 	 * @param page
 	 * @param content
 	 * @param roleId
@@ -63,7 +63,7 @@ public class LogController {
 	}
 	
 	/**
-	 * Ìí¼ÓÈÕÖ¾
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
 	 * @param user
 	 * @return
 	 */
@@ -73,29 +73,29 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(log == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÈÕÖ¾ÐÅÏ¢£¡");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢ï¿½ï¿½");
 			return ret;
 		}
 		if(StringUtils.isEmpty(log.getContent())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîÐ´ÈÕÖ¾ÄÚÈÝ£¡");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ý£ï¿½");
 			return ret;
 		}
 		log.setCreateTime(new Date());
 		if(logService.add(log) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾Ìí¼Ó³É¹¦£¡");
+		ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
 		return ret;
 	}
 	
 	
 	
 	/**
-	 * ÅúÁ¿É¾³ýÈÕÖ¾
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ö¾
 	 * @param ids
 	 * @return
 	 */
@@ -105,7 +105,7 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(ids)){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ÔñÒªÉ¾³ýµÄÊý¾Ý£¡");
+			ret.put("msg", "Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½");
 			return ret;
 		}
 		if(ids.contains(",")){
@@ -113,11 +113,11 @@ public class LogController {
 		}
 		if(logService.delete(ids) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾É¾³ýÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾É¾³ý³É¹¦£¡");
+		ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 		return ret;
 	}
 	
