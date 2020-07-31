@@ -5,17 +5,8 @@ import java.util.List;
 
 import com.ischoolbar.programmer.entity.admin.Menu;
 
-/**
- * 关于菜单操作的一些公用方法
- * @author llq
- *
- */
 public class MenuUtil {
-	/**
-	 * 从给定的菜单中返回所有顶级菜单
-	 * @param menuList
-	 * @return
-	 */
+	
 	public static List<Menu> getAllTopMenu(List<Menu> menuList){
 		List<Menu> ret = new ArrayList<Menu>();
 		for(Menu menu:menuList){
@@ -26,11 +17,6 @@ public class MenuUtil {
 		return ret;
 	}
 	
-	/**
-	 * 获取所有的二级菜单
-	 * @param menuList
-	 * @return
-	 */
 	public static List<Menu> getAllSecondMenu(List<Menu> menuList){
 		List<Menu> ret = new ArrayList<Menu>();
 		List<Menu> allTopMenu = getAllTopMenu(menuList);
@@ -45,12 +31,6 @@ public class MenuUtil {
 		return ret;
 	}
 	
-	/**
-	 * 获取某个二级菜单下的按钮
-	 * @param menuList
-	 * @param url
-	 * @return
-	 */
 	public static List<Menu> getAllThirdMenu(List<Menu> menuList,Long secondMenuId){
 		List<Menu> ret = new ArrayList<Menu>();
 		for(Menu menu:menuList){

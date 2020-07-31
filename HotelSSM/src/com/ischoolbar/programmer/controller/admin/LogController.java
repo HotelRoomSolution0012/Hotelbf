@@ -17,36 +17,18 @@ import com.ischoolbar.programmer.entity.admin.Log;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.LogService;
 
-/**
- * ÈÕÖ¾¹ÜÀí¿ØÖÆÆ÷
- * @author llq
- *
- */
 @RequestMapping("/admin/log")
 @Controller
 public class LogController {
 	@Autowired
 	private LogService logService;
 	
-	/**
-	 * ÈÕÖ¾ÁĞ±íÒ³Ãæ
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("log/list");
 		return model;
 	}
 	
-	/**
-	 * »ñÈ¡ÈÕÖ¾ÁĞ±í
-	 * @param page
-	 * @param content
-	 * @param roleId
-	 * @param sex
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getList(Page page,
@@ -62,50 +44,40 @@ public class LogController {
 		return ret;
 	}
 	
-	/**
-	 * Ìí¼ÓÈÕÖ¾
-	 * @param user
-	 * @return
-	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Log log){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(log == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÈÕÖ¾ĞÅÏ¢£¡");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢ï¿½ï¿½");
 			return ret;
 		}
 		if(StringUtils.isEmpty(log.getContent())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÈÕÖ¾ÄÚÈİ£¡");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½İ£ï¿½");
 			return ret;
 		}
 		log.setCreateTime(new Date());
 		if(logService.add(log) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾Ìí¼Ó³É¹¦£¡");
+		ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
 		return ret;
 	}
 	
 	
 	
-	/**
-	 * ÅúÁ¿É¾³ıÈÕÖ¾
-	 * @param ids
-	 * @return
-	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(String ids){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(ids)){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ÔñÒªÉ¾³ıµÄÊı¾İ£¡");
+			ret.put("msg", "Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½");
 			return ret;
 		}
 		if(ids.contains(",")){
@@ -113,11 +85,11 @@ public class LogController {
 		}
 		if(logService.delete(ids) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ÈÕÖ¾É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÈÕÖ¾É¾³ı³É¹¦£¡");
+		ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 		return ret;
 	}
 	

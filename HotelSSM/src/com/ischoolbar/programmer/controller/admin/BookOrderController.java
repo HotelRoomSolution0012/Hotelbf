@@ -20,11 +20,7 @@ import com.ischoolbar.programmer.service.AccountService;
 import com.ischoolbar.programmer.service.BookOrderService;
 import com.ischoolbar.programmer.service.RoomTypeService;
 
-/**
- * Ô¤¶¨¶©µ¥¹ÜÀíºóÌ¨¿ØÖÆÆ÷
- * @author Administrator
- *
- */
+
 @RequestMapping("/admin/book_order")
 @Controller
 public class BookOrderController {
@@ -37,11 +33,7 @@ public class BookOrderController {
 	private BookOrderService bookOrderService;
 	
 	
-	/**
-	 * Ô¤¶¨¶©µ¥¹ÜÀíÁÐ±íÒ³Ãæ
-	 * @param model
-	 * @return
-	 */
+
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.addObject("roomTypeList", roomTypeService.findAll());
@@ -50,176 +42,163 @@ public class BookOrderController {
 		return model;
 	}
 	
-	/**
-	 * Ô¤¶¨¶©µ¥ÐÅÏ¢Ìí¼Ó²Ù×÷
-	 * @param bookOrder
-	 * @return
-	 */
+
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(BookOrder bookOrder){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(bookOrder == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÔ¤¶¨¶©µ¥ÐÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(bookOrder.getAccountId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "¿Í»§²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(bookOrder.getRoomTypeId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "·¿ÐÍ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÃû³Æ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getMobile())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÊÖ»úºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getIdCard())){
 			ret.put("type", "error");
-			ret.put("msg", "ÁªÏµÈËÉí·ÝÖ¤ºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getArriveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "µ½´ïÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getLeaveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ÀëµêÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		bookOrder.setCreateTime(new Date());
 		if(bookOrderService.add(bookOrder) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		RoomType roomType = roomTypeService.find(bookOrder.getRoomTypeId());
-		//Ô¤¶¨³É¹¦ºóÈ¥ÐÞ¸Ä¸Ã·¿ÐÍµÄÔ¤¶¨Êý
+		//Ô¤ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½È¥ï¿½Þ¸Ä¸Ã·ï¿½ï¿½Íµï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
 		if(roomType != null){
 			roomType.setBookNum(roomType.getBookNum() + 1);
 			roomType.setAvilableNum(roomType.getAvilableNum() - 1);
 			roomTypeService.updateNum(roomType);
-			//Èç¹û¿ÉÓÃµÄ·¿¼äÊýÎª0£¬ÔòÉèÖÃ¸Ã·¿ÐÍ×´Ì¬ÒÑÂú
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸Ã·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
 			if(roomType.getAvilableNum() == 0){
 				roomType.setStatus(0);
 				roomTypeService.edit(roomType);
 			}
 		}
 		ret.put("type", "success");
-		ret.put("msg", "Ìí¼Ó³É¹¦!");
+		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * Ô¤¶¨¶©µ¥ÐÅÏ¢±à¼­²Ù×÷
-	 * @param account
-	 * @return
-	 */
+
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(BookOrder bookOrder){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(bookOrder == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÔ¤¶¨¶©µ¥ÐÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(bookOrder.getAccountId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "¿Í»§²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(bookOrder.getRoomTypeId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "·¿ÐÍ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÃû³Æ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getMobile())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÊÖ»úºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getIdCard())){
 			ret.put("type", "error");
-			ret.put("msg", "ÁªÏµÈËÉí·ÝÖ¤ºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getArriveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "µ½´ïÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getLeaveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ÀëµêÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		BookOrder existBookOrder = bookOrderService.find(bookOrder.getId());
 		if(existBookOrder == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÕýÈ·µÄÊý¾Ý½øÐÐ±à¼­!");
+			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ð±à¼­!");
 			return ret;
 		}
 		if(bookOrderService.edit(bookOrder) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "±à¼­Ê§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½à¼­Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
-		//ÅÐ¶Ï·¿ÐÍÊÇ·ñ·¢Éú±ä»¯
+		//ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ä»¯
 		if(existBookOrder.getRoomTypeId().longValue() != bookOrder.getRoomTypeId().longValue()){
-			//·¿ÐÍ·¢ÉúÁË±ä»¯
-			//Ê×ÏÈ»Ö¸´Ô­À´·¿ÐÍµÄÔ¤¶¨Êý¼°¿ÉÓÃÊý
+			//ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ë±ä»¯
+			//ï¿½ï¿½ï¿½È»Ö¸ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Íµï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			RoomType oldRoomType = roomTypeService.find(existBookOrder.getRoomTypeId());
 			oldRoomType.setAvilableNum(oldRoomType.getAvilableNum() + 1);
 			oldRoomType.setBookNum(oldRoomType.getBookNum() - 1);
 			roomTypeService.updateNum(oldRoomType);
 			if(oldRoomType.getStatus() == 0){
-				//¾ÉµÄ·¿¼äÔ­À´ÊÇÂú·¿£¬ÏÖÔÚ²»Âú·¿µÄ»°£¬»Ö¸´×´Ì¬
+				//ï¿½ÉµÄ·ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½×´Ì¬
 				if(oldRoomType.getAvilableNum() > 0){
-					//ÉèÖÃ³É×´Ì¬¿ÉÓÃ
+					//ï¿½ï¿½ï¿½Ã³ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
 					oldRoomType.setStatus(1);
 					roomTypeService.edit(oldRoomType);
 				}
 			}
-			//ÐÞ¸ÄÐÂµÄ·¿ÐÍµÄ¿ÉÓÃÊýºÍÔ¤¶¨Êý
+			//ï¿½Þ¸ï¿½ï¿½ÂµÄ·ï¿½ï¿½ÍµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
 			RoomType newRoomType = roomTypeService.find(bookOrder.getRoomTypeId());
 			newRoomType.setAvilableNum(newRoomType.getAvilableNum() - 1);
 			newRoomType.setBookNum(newRoomType.getBookNum() + 1);
 			roomTypeService.updateNum(newRoomType);
 			if(newRoomType.getAvilableNum() <= 0){
-				//Ã»ÓÐ¿ÉÓÃ·¿¼äÊý
-				newRoomType.setStatus(0);//ÉèÖÃ³ÉÂú·¿
+				//Ã»ï¿½Ð¿ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
+				newRoomType.setStatus(0);//ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½
 				roomTypeService.edit(newRoomType);
 			}
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ÐÞ¸Ä³É¹¦!");
+		ret.put("msg", "ï¿½Þ¸Ä³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * ·ÖÒ³²éÑ¯Ô¤¶¨¶©µ¥ÐÅÏ¢
-	 * @param name
-	 * @param page
-	 * @return
-	 */
+
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> list(

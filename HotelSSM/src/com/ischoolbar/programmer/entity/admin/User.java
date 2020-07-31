@@ -2,21 +2,17 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * ÓÃ»§ÊµÌåÀà
- * @author llq
- *
- */
+
 @Component
 public class User {
-	private Long id;//ÓÃ»§id£¬ÉèÖÃ×ÔÔö
-	private String username;//ÓÃ»§Ãû£¬µÇÂ¼Ãû
-	private String password;//µÇÂ¼ÃÜÂë
-	private Long roleId;//ËùÊô½ÇÉ«id
-	private String photo;//Í·ÏñÕÕÆ¬µØÖ·
-	private int sex;//ĞÔ±ğ0,´ú±íÎ´Öª£¬1´ú±íÄĞ£¬2´ú±íÅ®
-	private Integer age;//ÄêÁä
-	private String address;//¼ÒÍ¥×¡Ö·
+	private Long id;//ï¿½Ã»ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String username;//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
+	private String password;//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+	private Long roleId;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«id
+	private String photo;//Í·ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½ï¿½Ö·
+	private int sex;//ï¿½Ô±ï¿½0,ï¿½ï¿½ï¿½ï¿½Î´Öªï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ğ£ï¿½2ï¿½ï¿½ï¿½ï¿½Å®
+	private Integer age;//ï¿½ï¿½ï¿½ï¿½
+	private String address;//ï¿½ï¿½Í¥×¡Ö·
 	public Long getId() {
 		return id;
 	}

@@ -18,11 +18,6 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.RoomTypeService;
 import com.ischoolbar.programmer.service.admin.FloorService;
 
-/**
- * ·¿¼äÀàĞÍ¹ÜÀíºóÌ¨¿ØÖÆÆ÷
- * @author Administrator
- *
- */
 @RequestMapping("/admin/room_type")
 @Controller
 public class RoomTypeController {
@@ -31,101 +26,80 @@ public class RoomTypeController {
 	private RoomTypeService roomTypeService;
 	
 	
-	/**
-	 * ·¿¼äÀàĞÍ¹ÜÀíÁĞ±íÒ³Ãæ
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("room_type/list");
 		return model;
 	}
 	
-	/**
-	 * ·¿¼äÀàĞÍĞÅÏ¢Ìí¼Ó²Ù×÷
-	 * @param roomType
-	 * @return
-	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(RoomType roomType){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(roomType == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄ·¿¼äÀàĞÍĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(roomType.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "·¿¼äÀàĞÍÃû³Æ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
-		roomType.setAvilableNum(roomType.getRoomNum());//Ä¬ÈÏ·¿¼äÊıµÈÓÚ¿ÉÓÃ·¿¼äÊı
-		roomType.setBookNum(0);//ÉèÖÃÔ¤¶¨Êı0
-		roomType.setLivedNum(0);//ÉèÖÃÒÑÈë×¡Êı0
+		roomType.setAvilableNum(roomType.getRoomNum());//Ä¬ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
+		roomType.setBookNum(0);//ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½0
+		roomType.setLivedNum(0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½0
 		if(roomTypeService.add(roomType) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "Ìí¼Ó³É¹¦!");
+		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * ·¿¼äÀàĞÍĞÅÏ¢±à¼­²Ù×÷
-	 * @param roomType
-	 * @return
-	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(RoomType roomType){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(roomType == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄ·¿¼äÀàĞÍĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(roomType.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "·¿¼äÀàĞÍÃû³Æ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		RoomType existRoomType = roomTypeService.find(roomType.getId());
 		if(existRoomType == null){
 			ret.put("type", "error");
-			ret.put("msg", "Î´ÕÒµ½¸ÃÊı¾İ!");
+			ret.put("msg", "Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
 			return ret;
 		}
 		int offset = roomType.getRoomNum() - existRoomType.getRoomNum();
 		roomType.setAvilableNum(existRoomType.getAvilableNum() + offset);
 		if(roomType.getAvilableNum() <= 0){
-			roomType.setAvilableNum(0);//Ã»ÓĞ¿ÉÓÃ·¿¼ä
-			roomType.setStatus(0);//·¿ĞÍÒÑÂú
+			roomType.setAvilableNum(0);//Ã»ï¿½Ğ¿ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
+			roomType.setStatus(0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(roomType.getAvilableNum() + existRoomType.getLivedNum() + existRoomType.getBookNum() > roomType.getRoomNum()){
 				ret.put("type", "error");
-				ret.put("msg", "·¿¼äÊıÉèÖÃ²»ºÏÀí!");
+				ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½!");
 				return ret;
 			}
 		}
 		if(roomTypeService.edit(roomType) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ĞŞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½Ş¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ĞŞ¸Ä³É¹¦!");
+		ret.put("msg", "ï¿½Ş¸Ä³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * ·ÖÒ³²éÑ¯·¿¼äÀàĞÍĞÅÏ¢
-	 * @param name
-	 * @param page
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> list(
@@ -144,34 +118,29 @@ public class RoomTypeController {
 		return ret;
 	}
 	
-	/**
-	 * ·¿¼äÀàĞÍĞÅÏ¢É¾³ı²Ù×÷
-	 * @param id
-	 * @return
-	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(Long id){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(id == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ıµÄĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		try {
 			if(roomTypeService.delete(id) <= 0){
 				ret.put("type", "error");
-				ret.put("msg", "É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+				ret.put("msg", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 				return ret;
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			ret.put("type", "error");
-			ret.put("msg", "¸Ã·¿¼äÀàĞÍÏÂ´æÔÚ·¿¼äĞÅÏ¢£¬ÇëÏÈÉ¾³ı¸Ã·¿¼äÀàĞÍÏÂµÄËùÓĞ·¿¼äĞÅÏ¢!");
+			ret.put("msg", "ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ğ·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "É¾³ı³É¹¦!");
+		ret.put("msg", "É¾ï¿½ï¿½ï¿½É¹ï¿½!");
 		return ret;
 	}
 }

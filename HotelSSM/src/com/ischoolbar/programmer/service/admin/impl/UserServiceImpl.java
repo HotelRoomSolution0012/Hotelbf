@@ -9,11 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ischoolbar.programmer.dao.admin.UserDao;
 import com.ischoolbar.programmer.entity.admin.User;
 import com.ischoolbar.programmer.service.admin.UserService;
-/**
- * user”√ªßserviceimpl
- * @author llq
- *
- */
+
 @Service
 public class UserServiceImpl implements UserService {
 

@@ -2,25 +2,20 @@ package com.ischoolbar.programmer.entity;
 
 import org.springframework.stereotype.Component;
 
-/**
- * ·¿¼äÀàÐÍÊµÌåÀà
- * @author Administrator
- *
- */
 @Component
 public class RoomType {
-	private Long id;//·¿¼äÀàÐÍid
-	private String name;//·¿¼äÃû³Æ
-	private String photo;//·¿¼äÀàÐÍÍ¼Æ¬
-	private Float price;//·¿ÐÍ¼Û¸ñ
-	private Integer liveNum;//¿É×¡ÈËÊý
-	private Integer bedNum;//´²Î»Êý
-	private Integer roomNum;//·¿¼äÊý
-	private Integer avilableNum;//¿É×¡»ò¿ÉÔ¤¶¨·¿¼äÊý
-	private Integer bookNum;//Ô¤¶¨Êý
-	private Integer livedNum;//ÒÑ¾­Èë×¡Êý
-	private int status;//·¿ÐÍ×´Ì¬£¬0£º·¿ÐÍÒÑÂú,1:¿ÉÔ¤¶©¿ÉÈë×¡
-	private String remark;//·¿ÐÍ±¸×¢
+	private Long id;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id
+	private String name;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String photo;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+	private Float price;//ï¿½ï¿½ï¿½Í¼Û¸ï¿½
+	private Integer liveNum;//ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½
+	private Integer bedNum;//ï¿½ï¿½Î»ï¿½ï¿½
+	private Integer roomNum;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Integer avilableNum;//ï¿½ï¿½×¡ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Integer bookNum;//Ô¤ï¿½ï¿½ï¿½ï¿½
+	private Integer livedNum;//ï¿½Ñ¾ï¿½ï¿½ï¿½×¡ï¿½ï¿½
+	private int status;//ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,1:ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡
+	private String remark;//ï¿½ï¿½ï¿½Í±ï¿½×¢
 	public Long getId() {
 		return id;
 	}

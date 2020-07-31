@@ -21,11 +21,6 @@ import com.ischoolbar.programmer.service.AccountService;
 import com.ischoolbar.programmer.service.BookOrderService;
 import com.ischoolbar.programmer.service.RoomTypeService;
 
-/**
- * Ç°Ì¨ÓÃ»§¿ØÖÆÆ÷
- * @author Administrator
- *
- */
 @RequestMapping("/home/account")
 @Controller
 public class HomeAccountController {
@@ -37,12 +32,6 @@ public class HomeAccountController {
 	@Autowired
 	private BookOrderService bookOrderService;
 	
-	/**
-	 * Ç°Ì¨ÓÃ»§ÖÐÐÄÊ×Ò³
-	 * @param model
-	 * @param name
-	 * @return
-	 */
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model,HttpServletRequest request
 			){
@@ -57,11 +46,6 @@ public class HomeAccountController {
 		return model;
 	}
 	
-	/**
-	 * Ô¤¶¨·¿¼äÒ³Ãæ
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value="/book_order",method=RequestMethod.GET)
 	public ModelAndView bookOrder(ModelAndView model,Long roomTypeId
 			){
@@ -71,104 +55,94 @@ public class HomeAccountController {
 	}
 	
 	
-	/**
-	 * Ô¤¶¨ÐÅÏ¢Ìá½»
-	 * @param account
-	 * @return
-	 */
 	@RequestMapping(value="/book_order",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> bookOrderAct(BookOrder bookOrder,HttpServletRequest request){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(bookOrder == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÔ¤¶¨¶©µ¥ÐÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		Account account = (Account)request.getSession().getAttribute("account");
 		if(account == null){
 			ret.put("type", "error");
-			ret.put("msg", "¿Í»§²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		bookOrder.setAccountId(account.getId());
 		if(bookOrder.getRoomTypeId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "·¿ÐÍ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÃû³Æ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getMobile())){
 			ret.put("type", "error");
-			ret.put("msg", "Ô¤¶¨¶©µ¥ÁªÏµÈËÊÖ»úºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getIdCard())){
 			ret.put("type", "error");
-			ret.put("msg", "ÁªÏµÈËÉí·ÝÖ¤ºÅ²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getArriveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "µ½´ïÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(bookOrder.getLeaveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ÀëµêÊ±¼ä²»ÄÜÎª¿Õ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
 			return ret;
 		}
 		bookOrder.setCreateTime(new Date());
 		bookOrder.setStatus(0);
 		if(bookOrderService.add(bookOrder) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		RoomType roomType = roomTypeService.find(bookOrder.getRoomTypeId());
-		//Ô¤¶¨³É¹¦ºóÈ¥ÐÞ¸Ä¸Ã·¿ÐÍµÄÔ¤¶¨Êý
+		//Ô¤ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½È¥ï¿½Þ¸Ä¸Ã·ï¿½ï¿½Íµï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
 		if(roomType != null){
 			roomType.setBookNum(roomType.getBookNum() + 1);
 			roomType.setAvilableNum(roomType.getAvilableNum() - 1);
 			roomTypeService.updateNum(roomType);
-			//Èç¹û¿ÉÓÃµÄ·¿¼äÊýÎª0£¬ÔòÉèÖÃ¸Ã·¿ÐÍ×´Ì¬ÒÑÂú
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸Ã·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
 			if(roomType.getAvilableNum() == 0){
 				roomType.setStatus(0);
 				roomTypeService.edit(roomType);
 			}
 		}
 		ret.put("type", "success");
-		ret.put("msg", "Ô¤¶¨³É¹¦!");
+		ret.put("msg", "Ô¤ï¿½ï¿½ï¿½É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * ÐÞ¸Ä¸öÈËÐÅÏ¢Ìá½»
-	 * @param account
-	 * @return
-	 */
 	@RequestMapping(value="/update_info",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> updateInfoAct(Account account,HttpServletRequest request){
 		Map<String,String> retMap = new HashMap<String, String>();
 		if(account == null){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÓÃ»§ÐÅÏ¢£¡");
+			retMap.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
 			return retMap;
 		}
 		if(StringUtils.isEmpty(account.getName())){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÓÃ»§Ãû²»ÄÜÎª¿Õ£¡");
+			retMap.put("msg", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½");
 			return retMap;
 		}
 		Account loginedAccount = (Account)request.getSession().getAttribute("account");
 		if(isExist(account.getName(),loginedAccount.getId())){
 			retMap.put("type", "error");
-			retMap.put("msg", "¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ£¡");
+			retMap.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
 			return retMap;
 		}
 		loginedAccount.setAddress(account.getAddress());
@@ -178,57 +152,46 @@ public class HomeAccountController {
 		loginedAccount.setRealName(account.getRealName());
 		if(accountService.edit(loginedAccount) <= 0){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÐÞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			retMap.put("msg", "ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return retMap;
 		}
 		request.getSession().setAttribute("account", loginedAccount);
 		retMap.put("type", "success");
-		retMap.put("msg", "ÐÞ¸Ä³É¹¦£¡");
+		retMap.put("msg", "ï¿½Þ¸Ä³É¹ï¿½ï¿½ï¿½");
 		return retMap;
 	}
 	
-	/**
-	 * ÐÞ¸ÄÃÜÂëÌá½»
-	 * @param account
-	 * @return
-	 */
 	@RequestMapping(value="/update_pwd",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> updatePwdAct(String oldPassword,String newPassword,HttpServletRequest request){
 		Map<String,String> retMap = new HashMap<String, String>();
 		if(StringUtils.isEmpty(oldPassword)){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÇëÌîÐ´Ô­À´µÄÃÜÂë£¡");
+			retMap.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
 			return retMap;
 		}
 		if(StringUtils.isEmpty(newPassword)){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÇëÌîÐ´ÐÂÃÜÂë£¡");
+			retMap.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
 			return retMap;
 		}
 		Account loginedAccount = (Account)request.getSession().getAttribute("account");
 		if(!oldPassword.equals(loginedAccount.getPassword())){
 			retMap.put("type", "error");
-			retMap.put("msg", "Ô­ÃÜÂë´íÎó£¡");
+			retMap.put("msg", "Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return retMap;
 		}
 		loginedAccount.setPassword(newPassword);
 		if(accountService.edit(loginedAccount) <= 0){
 			retMap.put("type", "error");
-			retMap.put("msg", "ÐÞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
+			retMap.put("msg", "ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
 			return retMap;
 		}
 		retMap.put("type", "success");
-		retMap.put("msg", "ÐÞ¸ÄÃÜÂë³É¹¦£¡");
+		retMap.put("msg", "ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 		return retMap;
 	}
 	
-	/**
-	 * ÅÐ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
-	 * @param name
-	 * @param id
-	 * @return
-	 */
 	private boolean isExist(String name,Long id){
 		Account account = accountService.findByName(name);
 		if(account == null)return false;

@@ -2,11 +2,6 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 角色role实体
- * @author llq
- *
- */
 @Component
 public class Role {
 	
@@ -14,7 +9,7 @@ public class Role {
 	
 	private String name;
 	
-	private String remark;//角色备注
+	private String remark;//锟斤拷色锟斤拷注
 
 	public Long getId() {
 		return id;

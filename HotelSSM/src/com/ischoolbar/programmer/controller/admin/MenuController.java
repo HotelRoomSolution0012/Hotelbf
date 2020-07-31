@@ -21,11 +21,6 @@ import com.ischoolbar.programmer.entity.admin.Menu;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.MenuService;
 
-/**
- * ²Ëµ¥¹ÜÀí¿ØÖÆÆ÷
- * @author llq
- *
- */
 @RequestMapping("/admin/menu")
 @Controller
 public class MenuController {
@@ -34,11 +29,6 @@ public class MenuController {
 	private MenuService menuService;
 	
 	
-	/**
-	 * ²Ëµ¥¹ÜÀíÁĞ±íÒ³
-	 * @param model
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.addObject("topList", menuService.findTopList());
@@ -46,12 +36,6 @@ public class MenuController {
 		return model;
 	}
 	
-	/**
-	 * »ñÈ¡²Ëµ¥ÁĞ±í
-	 * @param page
-	 * @param name
-	 * @return
-	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getMenuList(Page page,
@@ -68,11 +52,6 @@ public class MenuController {
 		return ret;
 	}
 	
-	/**
-	 * »ñÈ¡Ö¸¶¨Ä¿Â¼ÏÂµÄÏµÍ³icon¼¯ºÏ
-	 * @param request
-	 * @return
-	 */
 	@RequestMapping(value="/get_icons",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getIconList(HttpServletRequest request){
@@ -82,7 +61,7 @@ public class MenuController {
 		List<String> icons = new ArrayList<String>();
 		if(!file.exists()){
 			ret.put("type", "error");
-			ret.put("msg", "ÎÄ¼şÄ¿Â¼²»´æÔÚ£¡");
+			ret.put("msg", "ï¿½Ä¼ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
 			return ret;
 		}
 		File[] listFiles = file.listFiles();
@@ -96,28 +75,23 @@ public class MenuController {
 		return ret;
 	}
 	
-	/**
-	 * ²Ëµ¥Ìí¼Ó
-	 * @param menu
-	 * @return
-	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Menu menu){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(menu == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄ²Ëµ¥ĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½Ä²Ëµï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(menu.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´²Ëµ¥Ãû³Æ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(menu.getIcon())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´²Ëµ¥Í¼±êÀà!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ëµï¿½Í¼ï¿½ï¿½ï¿½ï¿½!");
 			return ret;
 		}
 		if(menu.getParentId() == null){
@@ -125,36 +99,31 @@ public class MenuController {
 		}
 		if(menuService.add(menu) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "Ìí¼Ó³É¹¦!");
+		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * ²Ëµ¥ĞŞ¸Ä
-	 * @param menu
-	 * @return
-	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Menu menu){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(menu == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÕıÈ·µÄ²Ëµ¥ĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½È·ï¿½Ä²Ëµï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(menu.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´²Ëµ¥Ãû³Æ!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(menu.getIcon())){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÌîĞ´²Ëµ¥Í¼±êÀà!");
+			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ëµï¿½Í¼ï¿½ï¿½ï¿½ï¿½!");
 			return ret;
 		}
 		if(menu.getParentId() == null){
@@ -162,19 +131,14 @@ public class MenuController {
 		}
 		if(menuService.edit(menu) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ĞŞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "ï¿½Ş¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ĞŞ¸Ä³É¹¦!");
+		ret.put("msg", "ï¿½Ş¸Ä³É¹ï¿½!");
 		return ret;
 	}
 	
-	/**
-	 * É¾³ı²Ëµ¥ĞÅÏ¢
-	 * @param id
-	 * @return
-	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(
@@ -183,23 +147,23 @@ public class MenuController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(id == null){
 			ret.put("type", "error");
-			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ıµÄ²Ëµ¥ĞÅÏ¢!");
+			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½Ä²Ëµï¿½ï¿½ï¿½Ï¢!");
 			return ret;
 		}
 		List<Menu> findChildernList = menuService.findChildernList(id);
 		if(findChildernList != null && findChildernList.size() > 0){
-			//±íÊ¾¸Ã·ÖÀàÏÂ´æÔÚ×Ó·ÖÀà£¬²»ÄÜÉ¾³ı
+			//ï¿½ï¿½Ê¾ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 			ret.put("type", "error");
-			ret.put("msg", "¸Ã·ÖÀàÏÂ´æÔÚ×Ó·ÖÀà£¬²»ÄÜÉ¾³ı!");
+			ret.put("msg", "ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½!");
 			return ret;
 		}
 		if(menuService.delete(id) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
+			ret.put("msg", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "É¾³ı³É¹¦!");
+		ret.put("msg", "É¾ï¿½ï¿½ï¿½É¹ï¿½!");
 		return ret;
 	}
 }

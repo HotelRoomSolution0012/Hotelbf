@@ -2,18 +2,13 @@ package com.ischoolbar.programmer.page.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 分页基本信息
- * @author llq
- *
- */
 @Component
 public class Page {
-	private int page = 1;//当前页码
+	private int page = 1;//锟斤拷前页锟斤拷
 	
-	private int rows;//每页显示数量
+	private int rows;//每页锟斤拷示锟斤拷锟斤拷
 	
-	private int offset;//对应数据库中的偏移量
+	private int offset;//锟斤拷应锟斤拷锟捷匡拷锟叫碉拷偏锟斤拷锟斤拷
 
 	public int getPage() {
 		return page;

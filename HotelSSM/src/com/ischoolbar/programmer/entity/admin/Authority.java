@@ -2,18 +2,13 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-/**
- * 权限实体
- * @author llq
- *
- */
 @Component
 public class Authority {
 	private Long id;
 	
-	private Long roleId;//角色id
+	private Long roleId;//锟斤拷色id
 	
-	private Long menuId;//菜单id
+	private Long menuId;//锟剿碉拷id
 
 	public Long getId() {
 		return id;

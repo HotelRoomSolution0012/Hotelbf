@@ -4,25 +4,20 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-/**
- * Èë×¡ÊµÌåÀà
- * @author Administrator
- *
- */
 @Component
 public class Checkin {
-	private Long id;//Èë×¡id
-	private Long roomId;//·¿¼äid
-	private Long roomTypeId;//·¿ÐÍid
-	private Float checkinPrice;//Èë×¡¼Û¸ñ
-	private String name;//Èë×¡ÕßÐÕÃû
-	private String idCard;//Éí·ÝÖ¤ºÅÂë
-	private String mobile;//ÊÖ»úºÅ
-	private int status;//×´Ì¬£º0£ºÈë×¡ÖÐ£¬1£ºÒÑ½áËãÀëµê
-	private String arriveDate;//Èë×¡ÈÕÆÚ
-	private String leaveDate;//ÀëµêÈÕÆÚ
-	private Date createTime;//´´½¨Ê±¼ä
-	private Long bookOrderId;//Ô¤¶¨¶©µ¥id£¬¿ÉÎª¿Õ
+	private Long id;//ï¿½ï¿½×¡id
+	private Long roomId;//ï¿½ï¿½ï¿½ï¿½id
+	private Long roomTypeId;//ï¿½ï¿½ï¿½ï¿½id
+	private Float checkinPrice;//ï¿½ï¿½×¡ï¿½Û¸ï¿½
+	private String name;//ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String idCard;//ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+	private String mobile;//ï¿½Ö»ï¿½ï¿½ï¿½
+	private int status;//×´Ì¬ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½×¡ï¿½Ð£ï¿½1ï¿½ï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String arriveDate;//ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½
+	private String leaveDate;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date createTime;//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+	private Long bookOrderId;//Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
 	private String remark;
 	public Long getId() {
 		return id;

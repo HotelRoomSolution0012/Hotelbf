@@ -7,11 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.Menu;
 
-/**
- * ≤Àµ•π‹¿Ìdao
- * @author llq
- *
- */
 @Repository
 public interface MenuDao {
 	public int add(Menu menu);
