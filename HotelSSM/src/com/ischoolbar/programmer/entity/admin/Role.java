@@ -3,8 +3,8 @@ package com.ischoolbar.programmer.entity.admin;
 import org.springframework.stereotype.Component;
 
 /**
- * ï¿½ï¿½É«roleÊµï¿½ï¿½
- * @author Administrator
+ * ½ÇÉ«roleÊµÌå
+ * @author llq
  *
  */
 @Component
@@ -14,7 +14,7 @@ public class Role {
 	
 	private String name;
 	
-	private String remark;//ï¿½ï¿½É«ï¿½ï¿½×¢
+	private String remark;//½ÇÉ«±¸×¢
 
 	public Long getId() {
 		return id;

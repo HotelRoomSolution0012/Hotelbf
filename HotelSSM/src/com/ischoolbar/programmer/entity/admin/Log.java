@@ -5,17 +5,17 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 /**
- * 系统锟斤拷志
- * @author Administrator
+ * 系统日志
+ * @author llq
  *
  */
 @Component
 public class Log {
 	private Long id;
 	
-	private String content;//锟斤拷志锟斤拷锟斤拷
+	private String content;//日志内容
 	
-	private Date createTime;//锟斤拷锟斤拷时锟斤拷
+	private Date createTime;//创建时间
 
 	public Long getId() {
 		return id;

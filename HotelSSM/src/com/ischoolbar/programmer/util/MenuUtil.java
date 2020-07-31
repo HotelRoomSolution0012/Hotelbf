@@ -6,13 +6,13 @@ import java.util.List;
 import com.ischoolbar.programmer.entity.admin.Menu;
 
 /**
- * 锟斤拷锟节菜碉拷锟斤拷锟斤拷锟斤拷一些锟斤拷锟矫凤拷锟斤拷
- * @author Administrator
+ * 关于菜单操作的一些公用方法
+ * @author llq
  *
  */
 public class MenuUtil {
 	/**
-	 * 锟接革拷锟斤拷锟侥菜碉拷锟叫凤拷锟斤拷锟斤拷锟叫讹拷锟斤拷锟剿碉拷
+	 * 从给定的菜单中返回所有顶级菜单
 	 * @param menuList
 	 * @return
 	 */
@@ -27,7 +27,7 @@ public class MenuUtil {
 	}
 	
 	/**
-	 * 锟斤拷取锟斤拷锟叫的讹拷锟斤拷锟剿碉拷
+	 * 获取所有的二级菜单
 	 * @param menuList
 	 * @return
 	 */
@@ -46,7 +46,7 @@ public class MenuUtil {
 	}
 	
 	/**
-	 * 锟斤拷取某锟斤拷锟斤拷锟斤拷锟剿碉拷锟铰的帮拷钮
+	 * 获取某个二级菜单下的按钮
 	 * @param menuList
 	 * @param url
 	 * @return

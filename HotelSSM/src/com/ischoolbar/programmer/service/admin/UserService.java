@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.ischoolbar.programmer.entity.admin.User;
 
 /**
- * userï¿½Ã»ï¿½service
- * @author Administrator
+ * userÓÃ»§service
+ * @author llq
  *
  */
 @Service

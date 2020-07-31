@@ -18,8 +18,8 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.LogService;
 
 /**
- * ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * @author Administrator
+ * ÈÕÖ¾¹ÜÀí¿ØÖÆÆ÷
+ * @author llq
  *
  */
 @RequestMapping("/admin/log")
@@ -29,7 +29,7 @@ public class LogController {
 	private LogService logService;
 	
 	/**
-	 * ï¿½ï¿½Ö¾ï¿½Ğ±ï¿½Ò³ï¿½ï¿½
+	 * ÈÕÖ¾ÁĞ±íÒ³Ãæ
 	 * @param model
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class LogController {
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½ï¿½Ö¾ï¿½Ğ±ï¿½
+	 * »ñÈ¡ÈÕÖ¾ÁĞ±í
 	 * @param page
 	 * @param content
 	 * @param roleId
@@ -63,7 +63,7 @@ public class LogController {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
+	 * Ìí¼ÓÈÕÖ¾
 	 * @param user
 	 * @return
 	 */
@@ -73,29 +73,29 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(log == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½Ï¢ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÈÕÖ¾ĞÅÏ¢£¡");
 			return ret;
 		}
 		if(StringUtils.isEmpty(log.getContent())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½İ£ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÈÕÖ¾ÄÚÈİ£¡");
 			return ret;
 		}
 		log.setCreateTime(new Date());
 		if(logService.add(log) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÈÕÖ¾Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Ö¾ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "ÈÕÖ¾Ìí¼Ó³É¹¦£¡");
 		return ret;
 	}
 	
 	
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ö¾
+	 * ÅúÁ¿É¾³ıÈÕÖ¾
 	 * @param ids
 	 * @return
 	 */
@@ -105,7 +105,7 @@ public class LogController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(ids)){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½");
+			ret.put("msg", "Ñ¡ÔñÒªÉ¾³ıµÄÊı¾İ£¡");
 			return ret;
 		}
 		if(ids.contains(",")){
@@ -113,11 +113,11 @@ public class LogController {
 		}
 		if(logService.delete(ids) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÈÕÖ¾É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Ö¾É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "ÈÕÖ¾É¾³ı³É¹¦£¡");
 		return ret;
 	}
 	

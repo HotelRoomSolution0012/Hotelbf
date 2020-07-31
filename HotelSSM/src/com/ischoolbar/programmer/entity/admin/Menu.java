@@ -3,18 +3,18 @@ package com.ischoolbar.programmer.entity.admin;
 import org.springframework.stereotype.Component;
 
 /**
- * ï¿½Ëµï¿½Êµï¿½ï¿½ï¿½ï¿½
- * @author Administrator
+ * ²Ëµ¥ÊµÌåÀà
+ * @author llq
  *
  */
 @Component
 public class Menu {
 	private Long id;
-	private Long parentId;//ï¿½ï¿½ï¿½ï¿½id
-	private Long _parentId;//ï¿½ï¿½ï¿½ï¿½id,ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½easyuiï¿½Ä¸ï¿½ï¿½ï¿½id
-	private String name;//ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
-	private String url;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½url
-	private String icon;//ï¿½Ëµï¿½iconÍ¼ï¿½ï¿½
+	private Long parentId;//¸¸Ààid
+	private Long _parentId;//¸¸Ààid,ÓÃÀ´Æ¥ÅäeasyuiµÄ¸¸Ààid
+	private String name;//²Ëµ¥Ãû³Æ
+	private String url;//µã»÷ºóµÄurl
+	private String icon;//²Ëµ¥iconÍ¼±í
 	public Long getId() {
 		return id;
 	}
