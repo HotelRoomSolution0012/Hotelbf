@@ -21,6 +21,11 @@ import com.ischoolbar.programmer.entity.admin.Menu;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.MenuService;
 
+/**
+ * �˵����������
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/menu")
 @Controller
 public class MenuController {
@@ -29,6 +34,11 @@ public class MenuController {
 	private MenuService menuService;
 	
 	
+	/**
+	 * �˵������б�ҳ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.addObject("topList", menuService.findTopList());
@@ -36,6 +46,12 @@ public class MenuController {
 		return model;
 	}
 	
+	/**
+	 * ��ȡ�˵��б�
+	 * @param page
+	 * @param name
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getMenuList(Page page,
@@ -52,6 +68,11 @@ public class MenuController {
 		return ret;
 	}
 	
+	/**
+	 * ��ȡָ��Ŀ¼�µ�ϵͳicon����
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/get_icons",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getIconList(HttpServletRequest request){
@@ -75,6 +96,11 @@ public class MenuController {
 		return ret;
 	}
 	
+	/**
+	 * �˵����
+	 * @param menu
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Menu menu){
@@ -107,6 +133,11 @@ public class MenuController {
 		return ret;
 	}
 	
+	/**
+	 * �˵��޸�
+	 * @param menu
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Menu menu){
@@ -139,6 +170,11 @@ public class MenuController {
 		return ret;
 	}
 	
+	/**
+	 * ɾ���˵���Ϣ
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(

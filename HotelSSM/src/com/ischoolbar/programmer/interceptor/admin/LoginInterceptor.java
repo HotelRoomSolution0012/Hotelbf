@@ -15,7 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ischoolbar.programmer.entity.admin.Menu;
 import com.ischoolbar.programmer.util.MenuUtil;
-
+/**
+ * ��̨��¼������
+ * @author Administrator
+ *
+ */
 public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override

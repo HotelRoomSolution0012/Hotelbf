@@ -10,7 +10,11 @@ import net.sf.json.JSONObject;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
+/**
+ * ǰ̨��¼������
+ * @author Administrator
+ *
+ */
 public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override

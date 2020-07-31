@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.ischoolbar.programmer.entity.admin.Authority;
 
+/**
+ * Ȩ��service�ӿ�
+ * @author Administrator
+ *
+ */
 @Service
 public interface AuthorityService {
 	public int add(Authority authority);

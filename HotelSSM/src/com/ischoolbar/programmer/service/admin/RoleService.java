@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.ischoolbar.programmer.entity.admin.Role;
 
+/**
+ * ��ɫrole service
+ * @author Administrator
+ *
+ */
 @Service
 public interface RoleService {
 	public int add(Role role);

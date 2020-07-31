@@ -15,7 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ischoolbar.programmer.service.admin.CheckinService;
 
-
+/**
+ * 营业统计控制器
+ * @author Administrator
+ *
+ */
 /*@RequestMapping("/admin/stats")
 @Controller
 public class StatsController {
@@ -23,19 +27,29 @@ public class StatsController {
 	@Autowired
 	private CheckinService checkinService;
 	
+	/**
+	 * 统计页面
+	 * @param model
+	 * @return
+	 */
 	/*@RequestMapping(value="/stats",method=RequestMethod.GET)
 	public ModelAndView stats(ModelAndView model){
 		model.setViewName("stats/stats");
 		return model;
 	}
 	
+	/**
+	 * 根据类型来获取统计数据
+	 * @param type
+	 * @return
+	 */
 	/*@RequestMapping(value="/get_stats",method=RequestMethod.POST)
 	@ResponseBody*/
 	/*public Map<String, Object> getStats(String type){
 		Map<String, Object> ret = new HashMap<String, Object>();
 		if(StringUtils.isEmpty(type)){
 			ret.put("type", "error");
-			ret.put("msg", "锟斤拷选锟斤拷统锟斤拷锟斤拷锟斤拷!");
+			ret.put("msg", "请选择统计类型!");
 			return ret;
 		}
 		switch (type) {
@@ -51,12 +65,17 @@ public class StatsController {
 			}
 			default:{
 				ret.put("type", "error");
-				ret.put("msg", "锟斤拷选锟斤拷锟斤拷确锟斤拷统锟斤拷锟斤拷锟斤拷!");
+				ret.put("msg", "请选择正确的统计类型!");
 				return ret;
 			}
 		}
 	}
 	
+	/**
+	 * 把数据的键和值分开保存
+	 * @param statsValue
+	 * @return
+	 */
 	/*private Map<String, Object> getStatsValue(List<Map> statsValue){
 		Map<String, Object> ret = new HashMap<String, Object>();
 		List<String> keyList = new ArrayList<String>();

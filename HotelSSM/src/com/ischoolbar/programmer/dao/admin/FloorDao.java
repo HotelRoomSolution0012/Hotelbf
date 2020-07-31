@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.Floor;
 
+/**
+ * Â¥²ãdao
+ * @author Administrator
+ *
+ */
 @Repository
 public interface FloorDao {
 	public int add(Floor floor);

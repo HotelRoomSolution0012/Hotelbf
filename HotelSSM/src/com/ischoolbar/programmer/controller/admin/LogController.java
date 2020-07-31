@@ -17,18 +17,36 @@ import com.ischoolbar.programmer.entity.admin.Log;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.LogService;
 
+/**
+ * ��־���������
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/log")
 @Controller
 public class LogController {
 	@Autowired
 	private LogService logService;
 	
+	/**
+	 * ��־�б�ҳ��
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("log/list");
 		return model;
 	}
 	
+	/**
+	 * ��ȡ��־�б�
+	 * @param page
+	 * @param content
+	 * @param roleId
+	 * @param sex
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getList(Page page,
@@ -44,6 +62,11 @@ public class LogController {
 		return ret;
 	}
 	
+	/**
+	 * �����־
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Log log){
@@ -71,6 +94,11 @@ public class LogController {
 	
 	
 	
+	/**
+	 * ����ɾ����־
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(String ids){

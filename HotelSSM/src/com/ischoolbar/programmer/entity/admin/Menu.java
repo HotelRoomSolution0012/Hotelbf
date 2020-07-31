@@ -2,6 +2,11 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * �˵�ʵ����
+ * @author Administrator
+ *
+ */
 @Component
 public class Menu {
 	private Long id;

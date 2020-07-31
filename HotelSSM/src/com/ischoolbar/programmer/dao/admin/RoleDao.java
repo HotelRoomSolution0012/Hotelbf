@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.Role;
 
+/**
+ * ��ɫrole dao
+ * @author Administrator
+ *
+ */
 @Repository
 public interface RoleDao {
 	public int add(Role role);

@@ -24,6 +24,11 @@ import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.RoleService;
 import com.ischoolbar.programmer.service.admin.UserService;
 
+/**
+ * �û����������
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/user")
 @Controller
 public class UserController {
@@ -32,6 +37,11 @@ public class UserController {
 	@Autowired
 	private RoleService roleService;
 	
+	/**
+	 * �û��б�ҳ��
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		Map<String, Object> queryMap = new HashMap<String, Object>();
@@ -40,6 +50,14 @@ public class UserController {
 		return model;
 	}
 	
+	/**
+	 * ��ȡ�û��б�
+	 * @param page
+	 * @param username
+	 * @param roleId
+	 * @param sex
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getList(Page page,
@@ -59,6 +77,11 @@ public class UserController {
 		return ret;
 	}
 	
+	/**
+	 * ����û�
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(User user){
@@ -98,6 +121,11 @@ public class UserController {
 		return ret;
 	}
 	
+	/**
+	 * �༭�û�
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(User user){
@@ -112,6 +140,11 @@ public class UserController {
 			ret.put("msg", "����д�û�����");
 			return ret;
 		}
+//		if(StringUtils.isEmpty(user.getPassword())){
+//			ret.put("type", "error");
+//			ret.put("msg", "����д���룡");
+//			return ret;
+//		}
 		if(user.getRoleId() == null){
 			ret.put("type", "error");
 			ret.put("msg", "��ѡ��������ɫ��");
@@ -132,6 +165,11 @@ public class UserController {
 		return ret;
 	}
 	
+	/**
+	 * ����ɾ���û�
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(String ids){
@@ -154,6 +192,12 @@ public class UserController {
 		return ret;
 	}
 	
+	/**
+	 * �ϴ�ͼƬ
+	 * @param photo
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/upload_photo",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> uploadPhoto(MultipartFile photo,HttpServletRequest request){
@@ -197,6 +241,12 @@ public class UserController {
 		ret.put("filepath",request.getServletContext().getContextPath() + "/resources/upload/" + filename );
 		return ret;
 	}
+	/**
+	 * �жϸ��û����Ƿ����
+	 * @param username
+	 * @param id
+	 * @return
+	 */
 	private boolean isExist(String username,Long id){
 		User user = userService.findByUsername(username);
 		if(user == null)return false;

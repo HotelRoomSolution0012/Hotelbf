@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.ischoolbar.programmer.entity.admin.Menu;
 
+/**
+ * �˵�����service
+ * @author Administrator
+ *
+ */
 @Service
 public interface MenuService {
 	public int add(Menu menu);

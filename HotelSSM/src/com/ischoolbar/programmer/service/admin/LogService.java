@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.ischoolbar.programmer.entity.admin.Authority;
 import com.ischoolbar.programmer.entity.admin.Log;
 
+/**
+ * ��־�ӿ�
+ * @author Administrator
+ *
+ */
 @Service
 public interface LogService {
 	public int add(Log log);

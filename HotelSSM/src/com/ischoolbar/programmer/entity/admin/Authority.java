@@ -2,6 +2,11 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Ȩ��ʵ��
+ * @author Administrator
+ *
+ */
 @Component
 public class Authority {
 	private Long id;

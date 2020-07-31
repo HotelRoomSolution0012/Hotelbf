@@ -2,6 +2,11 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * ��ɫroleʵ��
+ * @author Administrator
+ *
+ */
 @Component
 public class Role {
 	

@@ -4,6 +4,11 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * ϵͳ��־
+ * @author Administrator
+ *
+ */
 @Component
 public class Log {
 	private Long id;

@@ -2,7 +2,11 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
-
+/**
+ * �û�ʵ����
+ * @author Administrator
+ *
+ */
 @Component
 public class User {
 	private Long id;//�û�id����������

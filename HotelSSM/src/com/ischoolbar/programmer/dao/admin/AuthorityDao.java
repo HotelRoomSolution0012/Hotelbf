@@ -6,6 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import com.ischoolbar.programmer.entity.admin.Authority;
 
+/**
+ * Ȩ��ʵ����dao
+ * @author Administrator
+ *
+ */
 @Repository
 public interface AuthorityDao {
 	public int add(Authority authority);

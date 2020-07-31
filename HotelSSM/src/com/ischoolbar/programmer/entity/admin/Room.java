@@ -2,15 +2,20 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * ·¿¼äÊµÌåÀà
+ * @author Administrator
+ *
+ */
 @Component
 public class Room {
-	private Long id;//ï¿½ï¿½ï¿½ï¿½id
-	private String photo;//ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
-	private String sn;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	private Long roomTypeId;//ï¿½ï¿½ï¿½ï¿½id
-	private Long floorId;//ï¿½ï¿½ï¿½ï¿½Â¥ï¿½ï¿½id
-	private int status;//ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡,1:ï¿½ï¿½ï¿½ï¿½×¡,2:ï¿½ï¿½É¨ï¿½ï¿½
-	private String remark;//ï¿½ï¿½ï¿½Í±ï¿½×¢
+	private Long id;//·¿¼äid
+	private String photo;//·¿¼äÍ¼Æ¬
+	private String sn;//·¿¼ä±àºÅ
+	private Long roomTypeId;//·¿ÐÍid
+	private Long floorId;//ËùÊôÂ¥²ãid
+	private int status;//·¿ÐÍ×´Ì¬£¬0£º¿ÉÈë×¡,1:ÒÑÈë×¡,2:´òÉ¨ÖÐ
+	private String remark;//·¿ÐÍ±¸×¢
 	public Long getId() {
 		return id;
 	}

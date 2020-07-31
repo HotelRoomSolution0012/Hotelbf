@@ -16,6 +16,11 @@ import com.ischoolbar.programmer.entity.admin.Floor;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.admin.FloorService;
 
+/**
+ * Â¥²ã¹ÜÀíºóÌ¨¿ØÖÆÆ÷
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/floor")
 @Controller
 public class FloorController {
@@ -24,60 +29,81 @@ public class FloorController {
 	private FloorService floorService;
 	
 	
+	/**
+	 * Â¥²ã¹ÜÀíÁÐ±íÒ³Ãæ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("floor/list");
 		return model;
 	}
 	
+	/**
+	 * Â¥²ãÐÅÏ¢Ìí¼Ó²Ù×÷
+	 * @param floor
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Floor floor){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(floor == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½Â¥ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÂ¥²ãÐÅÏ¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(floor.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "Â¥ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Â¥²ãÃû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(floorService.add(floor) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
+		ret.put("msg", "Ìí¼Ó³É¹¦!");
 		return ret;
 	}
 	
+	/**
+	 * Â¥²ãÐÅÏ¢±à¼­²Ù×÷
+	 * @param floor
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Floor floor){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(floor == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½Â¥ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÂ¥²ãÐÅÏ¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(floor.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "Â¥ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Â¥²ãÃû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(floorService.edit(floor) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "ÐÞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Þ¸Ä³É¹ï¿½!");
+		ret.put("msg", "ÐÞ¸Ä³É¹¦!");
 		return ret;
 	}
 	
+	/**
+	 * ·ÖÒ³²éÑ¯Â¥²ãÐÅÏ¢
+	 * @param name
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> list(
@@ -94,29 +120,34 @@ public class FloorController {
 		return ret;
 	}
 	
+	/**
+	 * Â¥²ãÐÅÏ¢É¾³ý²Ù×÷
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(Long id){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(id == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ýµÄÐÅÏ¢!");
 			return ret;
 		}
 		try {
 			if(floorService.delete(id) <= 0){
 				ret.put("type", "error");
-				ret.put("msg", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+				ret.put("msg", "É¾³ýÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 				return ret;
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Â¥ï¿½ï¿½ï¿½Â´ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Â¥ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "¸ÃÂ¥²ãÏÂ´æÔÚ·¿¼äÐÅÏ¢£¬ÇëÏÈÉ¾³ý¸ÃÂ¥²ãÏÂµÄËùÓÐ·¿¼äÐÅÏ¢!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "É¾ï¿½ï¿½ï¿½É¹ï¿½!");
+		ret.put("msg", "É¾³ý³É¹¦!");
 		return ret;
 	}
 }

@@ -2,11 +2,16 @@ package com.ischoolbar.programmer.entity.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Â¥²ãÊµÌåÀà
+ * @author Administrator
+ *
+ */
 @Component
 public class Floor {
-	private Long id;//Â¥ï¿½ï¿½id
-	private String name;//Â¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	private String remark;//Â¥ï¿½ã±¸×¢
+	private Long id;//Â¥²ãid
+	private String name;//Â¥²ãÃû³Æ
+	private String remark;//Â¥²ã±¸×¢
 	public Long getId() {
 		return id;
 	}

@@ -32,6 +32,11 @@ import com.ischoolbar.programmer.service.admin.UserService;
 import com.ischoolbar.programmer.util.CpachaUtil;
 import com.ischoolbar.programmer.util.MenuUtil;
 
+/**
+ * ϵͳ�����������
+ * @author Administrator
+ *
+ */
 @Controller
 @RequestMapping("/system")
 public class SystemController {
@@ -51,6 +56,11 @@ public class SystemController {
 	@Autowired
 	private LogService logService;
 	
+	/**
+	 * ϵͳ��¼�����ҳ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/index",method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView model,HttpServletRequest request){
 		List<Menu> userMenus = (List<Menu>)request.getSession().getAttribute("userMenus");
@@ -60,18 +70,33 @@ public class SystemController {
 		return model;//WEB-INF/views/+system/index+.jsp = WEB-INF/views/system/index.jsp
 	}
 	
+	/**
+	 * ϵͳ��¼��Ļ�ӭҳ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/welcome",method=RequestMethod.GET)
 	public ModelAndView welcome(ModelAndView model){
 		model.setViewName("system/welcome");
 		return model;
 	}
-
+	/**
+	 * ��½ҳ��
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public ModelAndView login(ModelAndView model){
 		model.setViewName("system/login");
 		return model;
 	}
 	
+	/**
+	 * ��¼���ύ���������
+	 * @param user
+	 * @param cpacha
+	 * @return
+	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> loginAct(User user,String cpacha,HttpServletRequest request){
@@ -81,6 +106,11 @@ public class SystemController {
 			ret.put("msg", "����д�û���Ϣ��");
 			return ret;
 		}
+		/*if(StringUtils.isEmpty(cpacha)){
+			ret.put("type", "error");
+			ret.put("msg", "����д��֤�룡");
+			return ret;
+		}*/
 		if(StringUtils.isEmpty(user.getUsername())){
 			ret.put("type", "error");
 			ret.put("msg", "����д�û�����");
@@ -97,6 +127,12 @@ public class SystemController {
 			ret.put("msg", "�Ự��ʱ����ˢ��ҳ�棡");
 			return ret;
 		}
+		/*if(!cpacha.toUpperCase().equals(loginCpacha.toString().toUpperCase())){
+			ret.put("type", "error");
+			ret.put("msg", "��֤�����");
+			logService.add("�û���Ϊ"+user.getUsername()+"���û���¼ʱ������֤�����!");
+			return ret;
+		}*/
 		User findByUsername = userService.findByUsername(user.getUsername());
 		if(findByUsername == null){
 			ret.put("type", "error");
@@ -132,6 +168,11 @@ public class SystemController {
 		return ret;
 	}
 	
+	/**
+	 * ��̨�˳�ע������
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public String logout(HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -141,6 +182,11 @@ public class SystemController {
 		return "redirect:login";
 	}
 	
+	/**
+	 * �޸�����ҳ��
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/edit_password",method=RequestMethod.GET)
 	public ModelAndView editPassword(ModelAndView model){
 		model.setViewName("system/edit_password");
@@ -174,6 +220,15 @@ public class SystemController {
 		return ret;
 	} 
 	
+	/**
+	 * ��ϵͳ���е���֤������ô˷���
+	 * @param vcodeLen
+	 * @param width
+	 * @param height
+	 * @param cpachaType:����������֤������ͣ������ַ���
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value="/get_cpacha",method=RequestMethod.GET)
 	public void generateCpacha(
 			@RequestParam(name="vl",required=false,defaultValue="4") Integer vcodeLen,

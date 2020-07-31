@@ -2,6 +2,11 @@ package com.ischoolbar.programmer.page.admin;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * ��ҳ������Ϣ
+ * @author Administrator
+ *
+ */
 @Component
 public class Page {
 	private int page = 1;//��ǰҳ��

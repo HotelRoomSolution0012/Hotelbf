@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.ischoolbar.programmer.entity.admin.Authority;
 import com.ischoolbar.programmer.entity.admin.Log;
 
+/**
+ * ϵͳ��־��dao
+ * @author Administrator
+ *
+ */
 @Repository
 public interface LogDao {
 	public int add(Log log);

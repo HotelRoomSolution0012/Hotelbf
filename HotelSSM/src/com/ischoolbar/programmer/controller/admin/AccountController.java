@@ -16,7 +16,11 @@ import com.ischoolbar.programmer.entity.Account;
 import com.ischoolbar.programmer.page.admin.Page;
 import com.ischoolbar.programmer.service.AccountService;
 
-
+/**
+ * ¿Í»§¹ÜÀíºóÌ¨¿ØÖÆÆ÷
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/account")
 @Controller
 public class AccountController {
@@ -25,84 +29,101 @@ public class AccountController {
 	private AccountService accountService;
 	
 	
-
+	/**
+	 * ¿Í»§¹ÜÀíÁÐ±íÒ³Ãæ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("account/list");
 		return model;
 	}
 	
-
+	/**
+	 * ¿Í»§ÐÅÏ¢Ìí¼Ó²Ù×÷
+	 * @param account
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Account account){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(account == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½Ä¿Í»ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄ¿Í»§ÐÅÏ¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(account.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "¿Í»§Ãû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(account.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "¿Í»§ÃÜÂë²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(isExist(account.getName(), 0l)){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ!");
 			return ret;
 		}
 		if(accountService.add(account) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
+		ret.put("msg", "Ìí¼Ó³É¹¦!");
 		return ret;
 	}
 	
-
+	/**
+	 * ¿Í»§ÐÅÏ¢±à¼­²Ù×÷
+	 * @param account
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Account account){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(account == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½Ä¿Í»ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄ¿Í»§ÐÅÏ¢!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(account.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "¿Í»§Ãû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(account.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Í»ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "¿Í»§ÃÜÂë²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(isExist(account.getName(), account.getId())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ!");
 			return ret;
 		}
 		if(accountService.edit(account) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Þ¸Ä³É¹ï¿½!");
+		ret.put("msg", "ÐÞ¸Ä³É¹¦!");
 		return ret;
 	}
 	
-
+	/**
+	 * ·ÖÒ³²éÑ¯¿Í»§ÐÅÏ¢
+	 * @param name
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> list(
@@ -127,34 +148,43 @@ public class AccountController {
 		return ret;
 	}
 	
-
+	/**
+	 * ¿Í»§ÐÅÏ¢É¾³ý²Ù×÷
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(Long id){
 		Map<String, String> ret = new HashMap<String, String>();
 		if(id == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÑ¡ÔñÒªÉ¾³ýµÄÐÅÏ¢!");
 			return ret;
 		}
 		try {
 			if(accountService.delete(id) <= 0){
 				ret.put("type", "error");
-				ret.put("msg", "É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+				ret.put("msg", "É¾³ýÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 				return ret;
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ã¿Í»ï¿½ï¿½Â´ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã¿Í»ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢!");
+			ret.put("msg", "¸Ã¿Í»§ÏÂ´æÔÚ¶©µ¥ÐÅÏ¢£¬ÇëÏÈÉ¾³ý¸Ã¿Í»§ÏÂµÄËùÓÐ¶©µ¥ÐÅÏ¢!");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "É¾ï¿½ï¿½ï¿½É¹ï¿½!");
+		ret.put("msg", "É¾³ý³É¹¦!");
 		return ret;
 	}
 	
-
+	/**
+	 * ÅÐ¶ÏÓÃ»§ÃûÊÇ·ñ´æÔÚ
+	 * @param name
+	 * @param id
+	 * @return
+	 */
 	private boolean isExist(String name,Long id){
 		Account findByName = accountService.findByName(name);
 		if(findByName == null)return false;

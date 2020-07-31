@@ -5,8 +5,17 @@ import java.util.List;
 
 import com.ischoolbar.programmer.entity.admin.Menu;
 
+/**
+ * ���ڲ˵�������һЩ���÷���
+ * @author Administrator
+ *
+ */
 public class MenuUtil {
-	
+	/**
+	 * �Ӹ����Ĳ˵��з������ж����˵�
+	 * @param menuList
+	 * @return
+	 */
 	public static List<Menu> getAllTopMenu(List<Menu> menuList){
 		List<Menu> ret = new ArrayList<Menu>();
 		for(Menu menu:menuList){
@@ -17,6 +26,11 @@ public class MenuUtil {
 		return ret;
 	}
 	
+	/**
+	 * ��ȡ���еĶ����˵�
+	 * @param menuList
+	 * @return
+	 */
 	public static List<Menu> getAllSecondMenu(List<Menu> menuList){
 		List<Menu> ret = new ArrayList<Menu>();
 		List<Menu> allTopMenu = getAllTopMenu(menuList);
@@ -31,6 +45,12 @@ public class MenuUtil {
 		return ret;
 	}
 	
+	/**
+	 * ��ȡĳ�������˵��µİ�ť
+	 * @param menuList
+	 * @param url
+	 * @return
+	 */
 	public static List<Menu> getAllThirdMenu(List<Menu> menuList,Long secondMenuId){
 		List<Menu> ret = new ArrayList<Menu>();
 		for(Menu menu:menuList){

@@ -2,16 +2,21 @@ package com.ischoolbar.programmer.entity;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * ¿Í»§ÊµÌåÀà
+ * @author Administrator
+ *
+ */
 @Component
 public class Account {
-	private Long id;//ï¿½Í»ï¿½id
-	private String name;//ï¿½Í»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
-	private String password;//ï¿½Í»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
-	private String realName;//ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
-	private String idCard;//ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
-	private String mobile;//ï¿½Ö»ï¿½ï¿½ï¿½
-	private String address;//ï¿½ï¿½Ïµï¿½ï¿½Ö·
-	private int status;//×´Ì¬ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Long id;//¿Í»§id
+	private String name;//¿Í»§µÇÂ¼Ãû
+	private String password;//¿Í»§µÇÂ¼ÃÜÂë
+	private String realName;//ÕæÊµÐÕÃû
+	private String idCard;//Éí·ÝÖ¤ºÅÂë
+	private String mobile;//ÊÖ»úºÅ
+	private String address;//ÁªÏµµØÖ·
+	private int status;//×´Ì¬£º0£º¿ÉÓÃ£¬-1£º¶³½á
 	public Long getId() {
 		return id;
 	}

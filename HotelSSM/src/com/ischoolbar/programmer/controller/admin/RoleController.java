@@ -22,6 +22,11 @@ import com.ischoolbar.programmer.service.admin.MenuService;
 import com.ischoolbar.programmer.service.admin.RoleService;
 
 
+/**
+ * ��ɫrole������
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/role")
 @Controller
 public class RoleController {
@@ -35,6 +40,11 @@ public class RoleController {
 	@Autowired
 	private MenuService menuService;
 	
+	/**
+	 * ��ɫ�б�ҳ��
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.setViewName("/role/list");
@@ -42,6 +52,12 @@ public class RoleController {
 	}
 	
 	
+	/**
+	 * ��ȡ��ɫ�б�
+	 * @param page
+	 * @param name
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> getList(Page page,
@@ -57,6 +73,11 @@ public class RoleController {
 		return ret;
 	}
 	
+	/**
+	 * ��ɫ���
+	 * @param role
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Role role){
@@ -81,6 +102,11 @@ public class RoleController {
 		return ret;
 	}
 	
+	/**
+	 * ��ɫ�޸�
+	 * @param role
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Role role){
@@ -105,6 +131,11 @@ public class RoleController {
 		return ret;
 	}
 	
+	/**
+	 * ɾ����ɫ��Ϣ
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> delete(Long id){
@@ -131,6 +162,10 @@ public class RoleController {
 		return ret;
 	}
 	
+	/**
+	 * ��ȡ���еĲ˵���Ϣ
+	 * @return
+	 */
 	@RequestMapping(value="/get_all_menu",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Menu> getAllMenu(){
@@ -140,6 +175,11 @@ public class RoleController {
 		return menuService.findList(queryMap);
 	}
 	
+	/**
+	 * ���Ȩ��
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping(value="/add_authority",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> addAuthority(
@@ -175,6 +215,11 @@ public class RoleController {
 		return ret;
 	}
 	
+	/**
+	 * ��ȡĳ����ɫ������Ȩ��
+	 * @param roleId
+	 * @return
+	 */
 	@RequestMapping(value="/get_role_authority",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Authority> getRoleAuthority(

@@ -25,6 +25,11 @@ import com.ischoolbar.programmer.service.RoomTypeService;
 import com.ischoolbar.programmer.service.admin.CheckinService;
 import com.ischoolbar.programmer.service.admin.RoomService;
 
+/**
+ * Èë×¡¹ÜÀíºóÌ¨¿ØÖÆÆ÷
+ * @author Administrator
+ *
+ */
 @RequestMapping("/admin/checkin")
 @Controller
 public class CheckinController {
@@ -38,6 +43,11 @@ public class CheckinController {
 	@Autowired
 	private CheckinService checkinService;
 	
+	/**
+	 * Èë×¡¹ÜÀíÁÐ±íÒ³Ãæ
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.GET)
 	public ModelAndView list(ModelAndView model){
 		model.addObject("roomTypeList", roomTypeService.findAll());
@@ -46,6 +56,11 @@ public class CheckinController {
 		return model;
 	}
 	
+	/**
+	 * Èë×¡ÐÅÏ¢Ìí¼Ó²Ù×÷
+	 * @param checkin
+	 * @return
+	 */
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> add(Checkin checkin,
@@ -54,66 +69,66 @@ public class CheckinController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(checkin == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÈë×¡ÐÅÏ¢!");
 			return ret;
 		}
 		if(checkin.getRoomId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "·¿¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(checkin.getRoomTypeId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "·¿ÐÍ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½×¡ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Èë×¡ÁªÏµÈËÃû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getMobile())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½×¡ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Èë×¡ÁªÏµÈËÊÖ»úºÅ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getIdCard())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "ÁªÏµÈËÉí·ÝÖ¤ºÅ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getArriveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "µ½´ïÊ±¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getLeaveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "ÀëµêÊ±¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		checkin.setCreateTime(new Date());
 		if(checkinService.add(checkin) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
 		RoomType roomType = roomTypeService.find(checkin.getRoomTypeId());
 		
 		if(bookOrderId != null){
-			//ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½(ï¿½ï¿½×¡ï¿½È¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½×¡Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡)
+			//´ÓÔ¤¶¨À´µÄÈë×¡µ¥(Èë×¡¼È¿ÉÒÔÊÇÖ±½ÓÈë×¡Ò²¿ÉÒÔÊÇÒÑ¾­Ô¤¶¨µÄÈËÀ´Èë×¡)
 			BookOrder bookOrder = bookOrderService.find(bookOrderId);
 			bookOrder.setStatus(1);
 			bookOrderService.edit(bookOrder);
-			//roomType.setBookNum(roomType.getBookNum() - 1);//Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1
+			//roomType.setBookNum(roomType.getBookNum() - 1);//Ô¤¶¨Êý¼õ1
 		}else{
 			roomType.setAvilableNum(roomType.getAvilableNum() - 1);
 		}
-		//ï¿½ï¿½×¡ï¿½É¹ï¿½ï¿½ï¿½È¥ï¿½Þ¸Ä¸Ã·ï¿½ï¿½Íµï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
+		//Èë×¡³É¹¦ºóÈ¥ÐÞ¸Ä¸Ã·¿ÐÍµÄÔ¤¶¨Êý
 		if(roomType != null){
-			roomType.setLivedNum(roomType.getLivedNum() + 1);//ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½1
+			roomType.setLivedNum(roomType.getLivedNum() + 1);//Èë×¡Êý¼Ó1
 			roomTypeService.updateNum(roomType);
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸Ã·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½
+			//Èç¹û¿ÉÓÃµÄ·¿¼äÊýÎª0£¬ÔòÉèÖÃ¸Ã·¿ÐÍ×´Ì¬ÒÑÂú
 			if(roomType.getAvilableNum() == 0){
 				roomType.setStatus(0);
 				roomTypeService.edit(roomType);
@@ -121,15 +136,20 @@ public class CheckinController {
 		}
 		Room room = roomService.find(checkin.getRoomId());
 		if(room != null){
-			//Òªï¿½Ñ·ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½×¡
+			//Òª°Ñ·¿¼ä×´Ì¬ÉèÖÃÎªÒÑÈë×¡
 			room.setStatus(1);
 			roomService.edit(room);
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Ó³É¹ï¿½!");
+		ret.put("msg", "Ìí¼Ó³É¹¦!");
 		return ret;
 	}
 	
+	/**
+	 * Èë×¡ÐÅÏ¢±à¼­²Ù×÷
+	 * @param account
+	 * @return
+	 */
 	@RequestMapping(value="/edit",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> edit(Checkin checkin,
@@ -138,63 +158,63 @@ public class CheckinController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(checkin == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½Ï¢!");
+			ret.put("msg", "ÇëÌîÐ´ÕýÈ·µÄÈë×¡ÐÅÏ¢!");
 			return ret;
 		}
 		if(checkin.getRoomId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "·¿¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(checkin.getRoomTypeId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "·¿ÐÍ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getName())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½×¡ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Èë×¡ÁªÏµÈËÃû³Æ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getMobile())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½×¡ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ö»ï¿½ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "Èë×¡ÁªÏµÈËÊÖ»úºÅ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getIdCard())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½Å²ï¿½ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "ÁªÏµÈËÉí·ÝÖ¤ºÅ²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getArriveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "µ½´ïÊ±¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		if(StringUtils.isEmpty(checkin.getLeaveDate())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ê±ï¿½ä²»ï¿½ï¿½Îªï¿½ï¿½!");
+			ret.put("msg", "ÀëµêÊ±¼ä²»ÄÜÎª¿Õ!");
 			return ret;
 		}
 		Checkin existCheckin = checkinService.find(checkin.getId());
 		if(existCheckin == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ð±à¼­!");
+			ret.put("msg", "ÇëÑ¡ÔñÕýÈ·µÄÈë×¡ÐÅÏ¢½øÐÐ±à¼­!");
 			return ret;
 		}
 		if(checkinService.edit(checkin) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½à¼­Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "±à¼­Ê§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
-		//ï¿½à¼­ï¿½É¹ï¿½Ö®ï¿½ï¿½1ï¿½ï¿½ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½2ï¿½ï¿½ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ä»¯ï¿½ï¿½3ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ç´ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ç´ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½Ï¢
+		//±à¼­³É¹¦Ö®ºó£º1£ºÅÐ¶Ï·¿ÐÍÊÇ·ñ·¢Éú±ä»¯£¬2£ºÅÐ¶Ï·¿¼äÊÇ·ñ·¢Éú±ä»¯£¬3£ºÅÐ¶ÏÊÇ·ñÊÇ´ÓÔ¤¶¨¶©µ¥À´µÄÐÅÏ¢
+		//Ê×ÏÈÅÐ¶ÏÊÇ·ñÊÇ´ÓÔ¤¶¨À´µÄÈë×¡ÐÅÏ¢
 		RoomType oldRoomType = roomTypeService.find(existCheckin.getRoomTypeId());
 		RoomType newRoomType = roomTypeService.find(checkin.getRoomTypeId());
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½
+		//·¿ÐÍÈë×¡Êý²»ÊÕÔ¤¶¨¶©µ¥µÄÓ°Ïì
 		if(oldRoomType.getId().longValue() != newRoomType.getId().longValue()){
-			//Ëµï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ë±ä»¯ï¿½ï¿½Ô­ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			//ËµÃ÷·¿ÐÍ·¢ÉúÁË±ä»¯£¬Ô­À´µÄ·¿ÐÍÈë×¡Êý»Ö¸´£¬ÐÂµÄ·¿ÐÍÈë×¡ÊýÔö¼Ó
 			oldRoomType.setLivedNum(oldRoomType.getLivedNum() - 1);
 			newRoomType.setLivedNum(newRoomType.getLivedNum() + 1);
 			if(bookOrderId == null){
@@ -202,23 +222,69 @@ public class CheckinController {
 				newRoomType.setAvilableNum(newRoomType.getAvilableNum() - 1);
 			}
 		}
+		/**
+		if(bookOrderId == null){
+			//±íÊ¾²»ÊÇ´ÓÔ¤¶¨¶©µ¥À´µÄ£¬´ËÊ±ÐèÅÐ¶ÏÔ­À´µÄÈë×¡ÐÅÏ¢ÊÇ·ñÀ´Ô´ÓÚÔ¤¶¨
+			if(existCheckin.getBookOrderId() == null){
+				oldRoomType.setAvilableNum(oldRoomType.getAvilableNum() + 1);
+				newRoomType.setAvilableNum(newRoomType.getAvilableNum() - 1);
+			}
+			if(existCheckin.getBookOrderId() != null){
+				//±íÊ¾Ô­À´µÄÈë×¡ÐÅÏ¢À´Ô´ÓÚÔ¤¶¨£¬µ«ÊÇÐÂµÄÈë×¡ÐÅÏ¢²»ÊÇÀ´Ô´ÓÚÔ¤¶¨,Ðè»Ö¸´Ô­À´µÄÔ¤¶¨×´Ì¬
+				BookOrder oldBookOrder = bookOrderService.find(existCheckin.getBookOrderId());
+				oldBookOrder.setStatus(0);
+				bookOrderService.edit(oldBookOrder);
+				oldRoomType.setBookNum(oldRoomType.getBookNum() + 1);
+			}
+		}
+		//±íÊ¾´ËÊ±µÄ¶©µ¥ÊÇÀ´Ô´ÓÚÔ¤¶¨
+		if(bookOrderId != null){
+			//±íÊ¾ÊÇ´ÓÔ¤¶¨¶©µ¥À´µÄ£¬´ËÊ±ÐèÅÐ¶ÏÔ­À´µÄÈë×¡ÐÅÏ¢ÊÇ·ñÀ´Ô´ÓÚÔ¤¶¨
+			if(existCheckin.getBookOrderId() != null){
+				//±íÊ¾Ô­À´µÄÈë×¡ÐÅÏ¢À´Ô´ÓÚÔ¤¶¨£¬µ«ÊÇÐÂµÄÈë×¡ÐÅÏ¢²»ÊÇÀ´Ô´ÓÚÔ¤¶¨,Ðè»Ö¸´Ô­À´µÄÔ¤¶¨×´Ì¬
+				BookOrder oldBookOrder = bookOrderService.find(existCheckin.getBookOrderId());
+				if(bookOrderId.longValue() != oldBookOrder.getId().longValue()){
+					oldBookOrder.setStatus(0);
+					bookOrderService.edit(oldBookOrder);
+					//oldRoomType.setBookNum(oldRoomType.getBookNum() + 1);
+				}
+			}
+			if(oldRoomType.getId().longValue() != newRoomType.getId().longValue()){
+				newRoomType.setBookNum(newRoomType.getBookNum() - 1);
+				
+				if(existCheckin.getBookOrderId() == null){
+					oldRoomType.setAvilableNum(oldRoomType.getAvilableNum() + 1);
+				}else{
+					oldRoomType.setBookNum(oldRoomType.getBookNum() + 1);
+				}
+			}
+			BookOrder newBookOrder = bookOrderService.find(bookOrderId);
+			newBookOrder.setStatus(1);
+			bookOrderService.edit(newBookOrder);
+		}**/
 		roomTypeService.updateNum(newRoomType);
 		roomTypeService.updateNum(oldRoomType);
-		//ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ä»¯
+		//ÅÐ¶Ï·¿¼äÊÇ·ñ·¢Éú±ä»¯
 		if(checkin.getRoomId().longValue() != existCheckin.getRoomId().longValue()){
-			//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ä·¢ï¿½ï¿½ï¿½Ë±ä»¯
+			//±íÊ¾·¿¼ä·¢ÉúÁË±ä»¯
 			Room oldRoom = roomService.find(existCheckin.getRoomId());
 			Room newRoom = roomService.find(checkin.getRoomId());
-			oldRoom.setStatus(0);//Ô­ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡
-			newRoom.setStatus(1);//ï¿½ï¿½ï¿½ÚµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡
+			oldRoom.setStatus(0);//Ô­À´µÄ·¿¼ä¿ÉÈë×¡
+			newRoom.setStatus(1);//ÏÖÔÚµÄ·¿¼äÒÑÈë×¡
 			roomService.edit(newRoom);
 			roomService.edit(oldRoom);
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Þ¸Ä³É¹ï¿½!");
+		ret.put("msg", "ÐÞ¸Ä³É¹¦!");
 		return ret;
 	}
-
+	
+	/**
+	 * ·ÖÒ³²éÑ¯Èë×¡ÐÅÏ¢
+	 * @param name
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping(value="/list",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> list(
@@ -245,6 +311,11 @@ public class CheckinController {
 		return ret;
 	}
 	
+	/**
+	 * ÍË·¿²Ù×÷
+	 * @param checkId
+	 * @return
+	 */
 	@RequestMapping(value="/checkout",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> checkout(Long checkId
@@ -252,28 +323,28 @@ public class CheckinController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(checkId == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "ÇëÑ¡ÔñÊý¾Ý!");
 			return ret;
 		}
 		Checkin checkin = checkinService.find(checkId);
 		if(checkin == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "ÇëÑ¡ÔñÕýÈ·µÄÊý¾Ý!");
 			return ret;
 		}
 		checkin.setStatus(1);
 		if(checkinService.edit(checkin) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ë·ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±!");
+			ret.put("msg", "ÍË·¿Ê§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±!");
 			return ret;
 		}
-		//ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+		//Ê×ÏÈ²Ù×÷·¿¼ä×´Ì¬
 		Room room = roomService.find(checkin.getRoomId());
 		if(room != null){
 			room.setStatus(2);
 			roomService.edit(room);
 		}
-		//ï¿½ï¿½ï¿½ï¿½Þ¸Ä·ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½×´Ì¬
+		//Æä´ÎÐÞ¸Ä·¿ÐÍ¿ÉÓÃÊý¡¢Èë×¡Êý¡¢×´Ì¬
 		RoomType roomType = roomTypeService.find(checkin.getRoomTypeId());
 		if(roomType != null){
 			roomType.setAvilableNum(roomType.getAvilableNum() + 1);
@@ -290,7 +361,7 @@ public class CheckinController {
 			roomTypeService.updateNum(roomType);
 			roomTypeService.edit(roomType);
 		}
-		//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½
+		//ÅÐ¶ÏÊÇ·ñÀ´×ÔÔ¤¶¨
 		if(checkin.getBookOrderId() != null){
 			BookOrder bookOrder = bookOrderService.find(checkin.getBookOrderId());
 			bookOrder.setStatus(2);
@@ -298,10 +369,15 @@ public class CheckinController {
 			
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Ë·ï¿½ï¿½É¹ï¿½!");
+		ret.put("msg", "ÍË·¿³É¹¦!");
 		return ret;
 	}
 	
+	/**
+	 * ¸ù¾Ý·¿¼äÀàÐÍ»ñÈ¡·¿¼ä
+	 * @param roomTypeId
+	 * @return
+	 */
 	@RequestMapping(value="/load_room_list",method=RequestMethod.POST)
 	@ResponseBody
 	public List<Map<String, Object>> load_room_list(Long roomTypeId){
