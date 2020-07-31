@@ -33,8 +33,8 @@ import com.ischoolbar.programmer.util.CpachaUtil;
 import com.ischoolbar.programmer.util.MenuUtil;
 
 /**
- * ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * @author n
+ * ÏµÍ³²Ù×÷Àà¿ØÖÆÆ÷
+ * @author llq
  *
  */
 @Controller
@@ -57,7 +57,7 @@ public class SystemController {
 	private LogService logService;
 	
 	/**
-	 * ÏµÍ³ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
+	 * ÏµÍ³µÇÂ¼ºóµÄÖ÷Ò³
 	 * @param model
 	 * @return
 	 */
@@ -71,7 +71,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * ÏµÍ³ï¿½ï¿½Â¼ï¿½ï¿½Ä»ï¿½Ó­Ò³
+	 * ÏµÍ³µÇÂ¼ºóµÄ»¶Ó­Ò³
 	 * @param model
 	 * @return
 	 */
@@ -81,7 +81,7 @@ public class SystemController {
 		return model;
 	}
 	/**
-	 * ï¿½ï¿½Â½Ò³ï¿½ï¿½
+	 * µÇÂ½Ò³Ãæ
 	 * @param model
 	 * @return
 	 */
@@ -92,7 +92,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * ï¿½ï¿½Â¼ï¿½ï¿½ï¿½á½»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * µÇÂ¼±íµ¥Ìá½»´¦Àí¿ØÖÆÆ÷
 	 * @param user
 	 * @param cpacha
 	 * @return
@@ -103,53 +103,53 @@ public class SystemController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(user == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîÐ´ÓÃ»§ÐÅÏ¢£¡");
 			return ret;
 		}
 		/*if(StringUtils.isEmpty(cpacha)){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ö¤ï¿½ë£¡");
+			ret.put("msg", "ÇëÌîÐ´ÑéÖ¤Âë£¡");
 			return ret;
 		}*/
 		if(StringUtils.isEmpty(user.getUsername())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîÐ´ÓÃ»§Ãû£¡");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ë£¡");
+			ret.put("msg", "ÇëÌîÐ´ÃÜÂë£¡");
 			return ret;
 		}
 		Object loginCpacha = request.getSession().getAttribute("loginCpacha");
 		if(loginCpacha == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½á»°ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½Ò³ï¿½æ£¡");
+			ret.put("msg", "»á»°³¬Ê±£¬ÇëË¢ÐÂÒ³Ãæ£¡");
 			return ret;
 		}
 		/*if(!cpacha.toUpperCase().equals(loginCpacha.toString().toUpperCase())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½");
-			logService.add("ï¿½Ã»ï¿½ï¿½ï¿½Îª"+user.getUsername()+"ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "ÑéÖ¤Âë´íÎó£¡");
+			logService.add("ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§µÇÂ¼Ê±ÊäÈëÑéÖ¤Âë´íÎó!");
 			return ret;
 		}*/
 		User findByUsername = userService.findByUsername(user.getUsername());
 		if(findByUsername == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
-			logService.add("ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Îª"+user.getUsername()+"ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "¸ÃÓÃ»§Ãû²»´æÔÚ£¡");
+			logService.add("µÇÂ¼Ê±£¬ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§²»´æÔÚ!");
 			return ret;
 		}
 		if(!user.getPassword().equals(findByUsername.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
-			logService.add("ï¿½Ã»ï¿½ï¿½ï¿½Îª"+user.getUsername()+"ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
+			ret.put("msg", "ÃÜÂë´íÎó£¡");
+			logService.add("ÓÃ»§ÃûÎª"+user.getUsername()+"µÄÓÃ»§µÇÂ¼Ê±ÊäÈëÃÜÂë´íÎó!");
 			return ret;
 		}
-		//Ëµï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¼°ï¿½ï¿½Ö¤ï¿½ë¶¼ï¿½ï¿½È·
-		//ï¿½ï¿½Ê±ï¿½ï¿½Òªï¿½ï¿½Ñ¯ï¿½Ã»ï¿½ï¿½Ä½ï¿½É«È¨ï¿½ï¿½
+		//ËµÃ÷ÓÃ»§ÃûÃÜÂë¼°ÑéÖ¤Âë¶¼ÕýÈ·
+		//´ËÊ±ÐèÒª²éÑ¯ÓÃ»§µÄ½ÇÉ«È¨ÏÞ
 		Role role = roleService.find(findByUsername.getRoleId());
-		List<Authority> authorityList = authorityService.findListByRoleId(role.getId());//ï¿½ï¿½ï¿½Ý½ï¿½É«ï¿½ï¿½È¡È¨ï¿½ï¿½ï¿½Ð±ï¿½
+		List<Authority> authorityList = authorityService.findListByRoleId(role.getId());//¸ù¾Ý½ÇÉ«»ñÈ¡È¨ÏÞÁÐ±í
 		String menuIds = "";
 		for(Authority authority:authorityList){
 			menuIds += authority.getMenuId() + ",";
@@ -158,18 +158,18 @@ public class SystemController {
 			menuIds = menuIds.substring(0,menuIds.length()-1);
 		}
 		List<Menu> userMenus = menuService.findListByIds(menuIds);
-		//ï¿½Ñ½ï¿½É«ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ï¢ï¿½Åµï¿½sessionï¿½ï¿½
+		//°Ñ½ÇÉ«ÐÅÏ¢¡¢²Ëµ¥ÐÅÏ¢·Åµ½sessionÖÐ
 		request.getSession().setAttribute("admin", findByUsername);
 		request.getSession().setAttribute("role", role);
 		request.getSession().setAttribute("userMenus", userMenus);
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½Â¼ï¿½É¹ï¿½ï¿½ï¿½");
-		logService.add("ï¿½Ã»ï¿½ï¿½ï¿½Îª{"+user.getUsername()+"}ï¿½ï¿½ï¿½ï¿½É«Îª{"+role.getName()+"}ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½É¹ï¿½!");
+		ret.put("msg", "µÇÂ¼³É¹¦£¡");
+		logService.add("ÓÃ»§ÃûÎª{"+user.getUsername()+"}£¬½ÇÉ«Îª{"+role.getName()+"}µÄÓÃ»§µÇÂ¼³É¹¦!");
 		return ret;
 	}
 	
 	/**
-	 * ï¿½ï¿½Ì¨ï¿½Ë³ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ºóÌ¨ÍË³ö×¢Ïú¹¦ÄÜ
 	 * @param request
 	 * @return
 	 */
@@ -183,7 +183,7 @@ public class SystemController {
 	}
 	
 	/**
-	 * ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
+	 * ÐÞ¸ÄÃÜÂëÒ³Ãæ
 	 * @param model
 	 * @return
 	 */
@@ -199,33 +199,33 @@ public class SystemController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(newpassword)){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
+			ret.put("msg", "ÇëÌîÐ´ÐÂÃÜÂë£¡");
 			return ret;
 		}
 		User user = (User)request.getSession().getAttribute("admin");
 		if(!user.getPassword().equals(oldpassword)){
 			ret.put("type", "error");
-			ret.put("msg", "Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ret.put("msg", "Ô­ÃÜÂë´íÎó£¡");
 			return ret;
 		}
 		user.setPassword(newpassword);
 		if(userService.editPassword(user) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÃÜÂëÐÞ¸ÄÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä³É¹ï¿½ï¿½ï¿½");
-		logService.add("ï¿½Ã»ï¿½ï¿½ï¿½Îª{"+user.getUsername()+"}ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½É¹ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½!");
+		ret.put("msg", "ÃÜÂëÐÞ¸Ä³É¹¦£¡");
+		logService.add("ÓÃ»§ÃûÎª{"+user.getUsername()+"}£¬µÄÓÃ»§³É¹¦ÐÞ¸ÄÃÜÂë!");
 		return ret;
 	} 
 	
 	/**
-	 * ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´Ë·ï¿½ï¿½ï¿½
+	 * ±¾ÏµÍ³ËùÓÐµÄÑéÖ¤Âë¾ù²ÉÓÃ´Ë·½·¨
 	 * @param vcodeLen
 	 * @param width
 	 * @param height
-	 * @param cpachaType:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+	 * @param cpachaType:ÓÃÀ´Çø±ðÑéÖ¤ÂëµÄÀàÐÍ£¬´«Èë×Ö·û´®
 	 * @param request
 	 * @param response
 	 */

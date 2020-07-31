@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import com.ischoolbar.programmer.entity.admin.Authority;
 
 /**
- * 权锟斤拷service锟接匡拷
- * @author n
+ * 权限service接口
+ * @author llq
  *
  */
 @Service

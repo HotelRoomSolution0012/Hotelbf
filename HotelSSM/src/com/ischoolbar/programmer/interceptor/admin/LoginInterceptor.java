@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ischoolbar.programmer.entity.admin.Menu;
 import com.ischoolbar.programmer.util.MenuUtil;
 /**
- * ï¿½ï¿½Ì¨ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * @author n
+ * ºóÌ¨µÇÂ¼À¹½ØÆ÷
+ * @author llq
  *
  */
 public class LoginInterceptor implements HandlerInterceptor {
@@ -44,23 +44,23 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String requestURI = request.getRequestURI();
 		Object admin = request.getSession().getAttribute("admin");
 		if(admin == null){
-			//ï¿½ï¿½Ê¾Î´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ßµï¿½Â¼Ê§Ð§
-			System.out.println("ï¿½ï¿½ï¿½ï¿½"+requestURI+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+			//±íÊ¾Î´µÇÂ¼»òÕßµÇÂ¼Ê§Ð§
+			System.out.println("Á´½Ó"+requestURI+"½øÈëÀ¹½ØÆ÷£¡");
 			String header = request.getHeader("X-Requested-With");
-			//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½
+			//ÅÐ¶ÏÊÇ·ñÊÇajaxÇëÇó
 			if("XMLHttpRequest".equals(header)){
-				//ï¿½ï¿½Ê¾ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½
+				//±íÊ¾ÊÇajaxÇëÇó
 				Map<String, String> ret = new HashMap<String, String>();
 				ret.put("type", "error");
-				ret.put("msg", "ï¿½ï¿½Â¼ï¿½á»°ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼!");
+				ret.put("msg", "µÇÂ¼»á»°³¬Ê±»ò»¹Î´µÇÂ¼£¬ÇëÖØÐÂµÇÂ¼!");
 				response.getWriter().write(JSONObject.fromObject(ret).toString());
 				return false;
 			}
-			//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ö±ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½òµ½µï¿½Â¼Ò³ï¿½ï¿½
+			//±íÊ¾ÊÇÆÕÍ¨Á´½ÓÌø×ª£¬Ö±½ÓÖØ¶¨Ïòµ½µÇÂ¼Ò³Ãæ
 			response.sendRedirect(request.getServletContext().getContextPath() + "/system/login");
 			return false;
 		}
-		//ï¿½ï¿½È¡ï¿½Ëµï¿½id
+		//»ñÈ¡²Ëµ¥id
 		String mid = request.getParameter("_mid");
 		if(!StringUtils.isEmpty(mid)){
 			List<Menu> allThirdMenu = MenuUtil.getAllThirdMenu((List<Menu>)request.getSession().getAttribute("userMenus"), Long.valueOf(mid));

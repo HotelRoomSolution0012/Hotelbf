@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.ischoolbar.programmer.entity.admin.Authority;
 
 /**
- * 权锟斤拷实锟斤拷锟斤拷dao
- * @author n
+ * 权限实现类dao
+ * @author llq
  *
  */
 @Repository

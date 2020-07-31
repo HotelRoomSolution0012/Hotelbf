@@ -25,8 +25,8 @@ import com.ischoolbar.programmer.service.admin.RoleService;
 import com.ischoolbar.programmer.service.admin.UserService;
 
 /**
- * ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * @author n
+ * ÓÃ»§¹ÜÀí¿ØÖÆÆ÷
+ * @author llq
  *
  */
 @RequestMapping("/admin/user")
@@ -38,7 +38,7 @@ public class UserController {
 	private RoleService roleService;
 	
 	/**
-	 * ï¿½Ã»ï¿½ï¿½Ğ±ï¿½Ò³ï¿½ï¿½
+	 * ÓÃ»§ÁĞ±íÒ³Ãæ
 	 * @param model
 	 * @return
 	 */
@@ -51,7 +51,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ï¿½ï¿½È¡ï¿½Ã»ï¿½ï¿½Ğ±ï¿½
+	 * »ñÈ¡ÓÃ»§ÁĞ±í
 	 * @param page
 	 * @param username
 	 * @param roleId
@@ -78,7 +78,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
+	 * Ìí¼ÓÓÃ»§
 	 * @param user
 	 * @return
 	 */
@@ -88,41 +88,41 @@ public class UserController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(user == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÓÃ»§ĞÅÏ¢£¡");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getUsername())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÓÃ»§Ãû£¡");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getPassword())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ë£¡");
+			ret.put("msg", "ÇëÌîĞ´ÃÜÂë£¡");
 			return ret;
 		}
 		if(user.getRoleId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½");
+			ret.put("msg", "ÇëÑ¡ÔñËùÊô½ÇÉ«£¡");
 			return ret;
 		}
 		if(isExist(user.getUsername(), 0l)){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
+			ret.put("msg", "¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ£¬ÇëÖØĞÂÊäÈë£¡");
 			return ret;
 		}
 		if(userService.add(user) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÓÃ»§Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½É«ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "½ÇÉ«Ìí¼Ó³É¹¦£¡");
 		return ret;
 	}
 	
 	/**
-	 * ï¿½à¼­ï¿½Ã»ï¿½
+	 * ±à¼­ÓÃ»§
 	 * @param user
 	 * @return
 	 */
@@ -132,41 +132,41 @@ public class UserController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(user == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½È·ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÕıÈ·µÄÓÃ»§ĞÅÏ¢£¡");
 			return ret;
 		}
 		if(StringUtils.isEmpty(user.getUsername())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½");
+			ret.put("msg", "ÇëÌîĞ´ÓÃ»§Ãû£¡");
 			return ret;
 		}
 //		if(StringUtils.isEmpty(user.getPassword())){
 //			ret.put("type", "error");
-//			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ë£¡");
+//			ret.put("msg", "ÇëÌîĞ´ÃÜÂë£¡");
 //			return ret;
 //		}
 		if(user.getRoleId() == null){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½");
+			ret.put("msg", "ÇëÑ¡ÔñËùÊô½ÇÉ«£¡");
 			return ret;
 		}
 		if(isExist(user.getUsername(), user.getId())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¡");
+			ret.put("msg", "¸ÃÓÃ»§ÃûÒÑ¾­´æÔÚ£¬ÇëÖØĞÂÊäÈë£¡");
 			return ret;
 		}
 		if(userService.edit(user) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÓÃ»§Ìí¼ÓÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½ï¿½É«ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "½ÇÉ«Ìí¼Ó³É¹¦£¡");
 		return ret;
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½
+	 * ÅúÁ¿É¾³ıÓÃ»§
 	 * @param ids
 	 * @return
 	 */
@@ -176,7 +176,7 @@ public class UserController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(StringUtils.isEmpty(ids)){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ£ï¿½");
+			ret.put("msg", "Ñ¡ÔñÒªÉ¾³ıµÄÊı¾İ£¡");
 			return ret;
 		}
 		if(ids.contains(",")){
@@ -184,16 +184,16 @@ public class UserController {
 		}
 		if(userService.delete(ids) <= 0){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ã»ï¿½É¾ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½");
+			ret.put("msg", "ÓÃ»§É¾³ıÊ§°Ü£¬ÇëÁªÏµ¹ÜÀíÔ±£¡");
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Ã»ï¿½É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "ÓÃ»§É¾³ı³É¹¦£¡");
 		return ret;
 	}
 	
 	/**
-	 * ï¿½Ï´ï¿½Í¼Æ¬
+	 * ÉÏ´«Í¼Æ¬
 	 * @param photo
 	 * @param request
 	 * @return
@@ -204,45 +204,45 @@ public class UserController {
 		Map<String, String> ret = new HashMap<String, String>();
 		if(photo == null){
 			ret.put("type", "error");
-			ret.put("msg", "Ñ¡ï¿½ï¿½Òªï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½");
+			ret.put("msg", "Ñ¡ÔñÒªÉÏ´«µÄÎÄ¼ş£¡");
 			return ret;
 		}
 		if(photo.getSize() > 1024*1024*1024){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½Ä¼ï¿½ï¿½ï¿½Ğ¡ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½10Mï¿½ï¿½");
+			ret.put("msg", "ÎÄ¼ş´óĞ¡²»ÄÜ³¬¹ı10M£¡");
 			return ret;
 		}
-		//ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½×º
+		//»ñÈ¡ÎÄ¼şºó×º
 		String suffix = photo.getOriginalFilename().substring(photo.getOriginalFilename().lastIndexOf(".")+1,photo.getOriginalFilename().length());
 		if(!"jpg,jpeg,gif,png".toUpperCase().contains(suffix.toUpperCase())){
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½Ñ¡ï¿½ï¿½jpg,jpeg,gif,pngï¿½ï¿½Ê½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½");
+			ret.put("msg", "ÇëÑ¡Ôñjpg,jpeg,gif,png¸ñÊ½µÄÍ¼Æ¬£¡");
 			return ret;
 		}
 		String savePath = request.getServletContext().getRealPath("/") + "/resources/upload/";
 		File savePathFile = new File(savePath);
 		if(!savePathFile.exists()){
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ò´´½ï¿½Ä¿Â¼
+			//Èô²»´æÔÚ¸ÄÄ¿Â¼£¬Ôò´´½¨Ä¿Â¼
 			savePathFile.mkdir();
 		}
 		String filename = new Date().getTime()+"."+suffix;
 		try {
-			//ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ä¿Â¼
+			//½«ÎÄ¼ş±£´æÖÁÖ¸¶¨Ä¿Â¼
 			photo.transferTo(new File(savePath+filename));
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			ret.put("type", "error");
-			ret.put("msg", "ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ì³£ï¿½ï¿½");
+			ret.put("msg", "±£´æÎÄ¼şÒì³££¡");
 			e.printStackTrace();
 			return ret;
 		}
 		ret.put("type", "success");
-		ret.put("msg", "ï¿½Ã»ï¿½É¾ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
+		ret.put("msg", "ÓÃ»§É¾³ı³É¹¦£¡");
 		ret.put("filepath",request.getServletContext().getContextPath() + "/resources/upload/" + filename );
 		return ret;
 	}
 	/**
-	 * ï¿½Ğ¶Ï¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+	 * ÅĞ¶Ï¸ÃÓÃ»§ÃûÊÇ·ñ´æÔÚ
 	 * @param username
 	 * @param id
 	 * @return
